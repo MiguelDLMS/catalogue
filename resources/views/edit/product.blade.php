@@ -99,32 +99,22 @@
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript">
         var data = {
-            "MX":100
+            "MX": "#4E7387"
         };
 
-        var myCustomColors = {
-            'AU-SA': '#4E7387',
-            'AU-WA': '#333333',
-            'AU-VIC': '#89AFBF',
-            'AU-TAS': '#817F8E',
-            'AU-QLD': '#344B5E',
-            'AU-NSW': '#344B5E',
-            'AU-ACT': '#344B5E',
-            'AU-NT': '#344B5E'
-        };
-
-        map = new jvm.WorldMap({
-            map: 'world_mill',
-            container: $('#map'),
+        var map = $('#map').vectorMap({
+            map: 'world_mill', // el mapa del mundo
             backgroundColor: '#eff7ff',
             series: {
                 regions: [{
                     values: data, // los valores
                     attribute: 'fill'
+                    normalizeFunction: 'polynomial' // la formula de normalizacion de datos
                 }]
+            },
+            onRegionTipShow: function(e, el, code){ // al seleccionar una region se muestra el valor que tengan en el array
+                el.html(el.html());
             }
         });
-
-        map.series.regions[0].setValues(myCustomColors);
     </script>
 @endpush
