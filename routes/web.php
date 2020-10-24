@@ -176,3 +176,8 @@ Route::post('/request-quote', [
     'uses' => 'App\Http\Controllers\QuoteRequestFormController@Request',
     'as' => 'request.quote'
 ]);
+
+Route::post('/edit-product.images', [
+    'uses' => 'App\Http\Controllers\QuoteRequestFormController@Request',
+    'as' => 'request.quote'
+]);
