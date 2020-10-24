@@ -44,103 +44,113 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Seleccionar imágenes</button>
-            <div class="card-body">
-                <h3 class="card-title">{{ $product['Name'] }}</h3>
-                <p class="card-text">{{ $product['Description'] }}</p>
-            </div>
-            <div class="card-footer">
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Cotizar</button>
-            </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <form method="POST" action="{{ route('request.quote') }}">
-                            @csrf
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLabe">Solicitar cotización</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="name" class="col-form-label">Nombre(s):</label>
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="last-name" class="col-form-label">Apellido(s):</label>
-                                    <input type="text" class="form-control" id="last-name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="col-form-label">Correo electrónico:</label>
-                                    <input type="email" class="form-control" id="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="message" class="col-form-label">Especificaciones de la cotización:</label>
-                                    <textarea class="form-control" id="message"></textarea>
-                                </div>
-
-                                <input type="hidden" id="product-name" name="product-name" value="{{ $product['Name'] }}">
-                                <input type="hidden" id="product-url" name="product-url" value="http://catalogue.acorla.com/product/{{ $product['ID_Product'] }}">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary">Enviar solicitud</button>
-                            </div>
-                        </form>
+            <form method="POST" action="{{ route('request.quote') }}">
+                @csrf
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Seleccionar imágenes</button>
+                <div class="card-body">
+                    <div class="form-group">
+                        <h3 class="card-title">
+                            <input type="text" class="form-control" id="name" value="{{ $product['Name'] }}">
+                        </h3>
                     </div>
+                    <h3 class="card-title">{{ $product['Name'] }}</h3>
+                    <p class="card-text">{{ $product['Description'] }}</p>
                 </div>
-            </div>
-            <!-- /Modal -->
-        </div>
-        <!-- /.card -->
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Cotizar</button>
+                </div>
 
-        <div class="card card-outline-secondary my-4">
-            <div class="card-header">
-                Información técnica
-            </div>
-            
-            <div class="card-body">
-                {{ $product['Technical_Specifications'] }}
-            </div>
-        </div>
-        <!-- /.card -->
+                <!-- Modal -->
+                <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form method="POST" action="{{ route('request.quote') }}">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabe">Solicitar cotización</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="name" class="col-form-label">Nombre(s):</label>
+                                        <input type="text" class="form-control" id="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last-name" class="col-form-label">Apellido(s):</label>
+                                        <input type="text" class="form-control" id="last-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-form-label">Correo electrónico:</label>
+                                        <input type="email" class="form-control" id="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message" class="col-form-label">Especificaciones de la cotización:</label>
+                                        <textarea class="form-control" id="message"></textarea>
+                                    </div>
 
-        <div class="card card-outline-secondary my-4">
-            <div class="card-header">
-                Región
-            </div>
-            
-            <div class="card-body">
-                <div id="map" class="map" latitude="{{ $product['Latitude'] }}" longitude="{{ $product['Longitude'] }}"></div>
-            </div>
-        </div>
-        <!-- /.card -->
-
-        <div class="row my-4">
-            <div class="col">
-                <h3>Productos sugeridos</h3>
-            </div>
-        </div>
-
-        <div class="row my-4">
-            @forelse ( $suggestedProducts as $product )
-                <x-ProductCard :productID="$product['ID_Product']" :productName="$product['Name']" :productDescription="$product['Description']" :imageName="$product['Images'][0]['Name']" />
-            @empty
-                <div class="col">
-                    <div class="col">
-                        <div class="row my-2">
-                            <img class="col-2 img-fluid mx-auto" src="{{ asset('img/magnifying-glass-1976105_640.png') }}" alt="">
-                            <h2 class="text-center">No hemos encontrado productos similares.</h2>
+                                    <input type="hidden" id="product-name" name="product-name" value="{{ $product['Name'] }}">
+                                    <input type="hidden" id="product-url" name="product-url" value="http://catalogue.acorla.com/product/{{ $product['ID_Product'] }}">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            @endforelse
-        </div>
-        <!-- /.row -->
+                <!-- /Modal -->
+            </div>
+            <!-- /.card -->
+
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    Información técnica
+                </div>
+                
+                <div class="card-body">
+                    {{ $product['Technical_Specifications'] }}
+                </div>
+            </div>
+            <!-- /.card -->
+
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    Región
+                </div>
+                
+                <div class="card-body">
+                    <div id="map" class="map" latitude="{{ $product['Latitude'] }}" longitude="{{ $product['Longitude'] }}"></div>
+                </div>
+            </div>
+            <!-- /.card -->
+
+            <div class="row my-4">
+                <div class="col">
+                    <h3>Productos sugeridos</h3>
+                </div>
+            </div>
+
+            <div class="row my-4">
+                @forelse ( $suggestedProducts as $product )
+                    <x-ProductCard :productID="$product['ID_Product']" :productName="$product['Name']" :productDescription="$product['Description']" :imageName="$product['Images'][0]['Name']" />
+                @empty
+                    <div class="col">
+                        <div class="col">
+                            <div class="row my-2">
+                                <img class="col-2 img-fluid mx-auto" src="{{ asset('img/magnifying-glass-1976105_640.png') }}" alt="">
+                                <h2 class="text-center">No hemos encontrado productos similares.</h2>
+                            </div>
+                        </div>
+                    </div>
+                @endforelse
+            </div>
+            <!-- /.row -->
+
+        </form>
         
     </div>
     <!-- /.col-lg-8 -->
