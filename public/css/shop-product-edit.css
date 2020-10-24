@@ -18,6 +18,11 @@ body {
     object-fit: cover;
 }
 
+.delete-image {
+    position: absolute;
+    top: 0px;
+}
+
 .carousel-item .product-image {
     width: 100% !important;
     height: 45vh !important;
