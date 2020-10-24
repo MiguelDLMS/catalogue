@@ -89,7 +89,7 @@
                                                 </svg>
                                             </label>
 
-                                            <input type="file" id="files" name="files">
+                                            <input type="file" id="files" name="files" style="visibility:hidden;">
                                         </div>
                                     </div>
                                 </div>
