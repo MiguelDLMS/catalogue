@@ -46,6 +46,42 @@
                 </a>
             </div>
             <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Seleccionar imágenes</button>
+            <div class="card-footer">
+
+            <!-- Modal -->
+            <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form method="POST" action="{{ route('request.quote') }}">
+                            @csrf
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabe">Imágenes</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                @foreach ($product['Images'] as $image)
+                                    @if ($loop->first)
+                                        <div class="carousel-item active">
+                                            <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                                        </div>
+                                    @else
+                                        <div class="carousel-item">
+                                            <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /Modal -->
 
             <form method="POST" action="{{ route('request.quote') }}">
                 @csrf
@@ -100,8 +136,6 @@
         var data = {
             [code]: "#1A2F40"
         };
-
-        console.log(data);
 
         var map = $('#map').vectorMap({
             map: 'world_mill', // el mapa del mundo
