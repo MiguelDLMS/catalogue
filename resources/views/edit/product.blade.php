@@ -63,8 +63,11 @@
                             <div class="modal-body">
                                 <div class="row">
                                     @foreach ($product['Images'] as $image)
-                                        <div class="col-lg-4 col-sm-6 col-12">
-                                            <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                                        <div>
+                                            <div class="col-lg-4 col-sm-6 col-12">
+                                                <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                                            </div>
+                                            <button type="button" class="btn btn-danger">Eliminar</button>
                                         </div>
                                     @endforeach
                                 </div>
