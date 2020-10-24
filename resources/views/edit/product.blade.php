@@ -44,19 +44,17 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Seleccionar imágenes</button>
 
             <form method="POST" action="{{ route('request.quote') }}">
                 @csrf
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Seleccionar imágenes</button>
                 <div class="card-body">
-                    <div class="form-group">
-                        <h3 class="card-title">
-                            <input type="text" class="form-control" id="name" value="{{ $product['Name'] }}">
-                        </h3>
-                        <p class="card-text">
-                            <input type="text" class="form-control" id="name" value="{{ $product['Description'] }}">
-                        </p>
-                    </div>
+                    <h3 class="card-title">
+                        <input type="text" class="form-control" id="name" name="name" value="{{ $product['Name'] }}">
+                    </h3>
+                    <p class="card-text">
+                        <input type="text" class="form-control" id="description" name="description" value="{{ $product['Description'] }}">
+                    </p>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request" disabled>Cotizar</button>
@@ -70,7 +68,7 @@
                 </div>
                 
                 <div class="card-body">
-                    {{ $product['Technical_Specifications'] }}
+                    <input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Technical_Specifications'] }}">
                 </div>
             </div>
             <!-- /.card -->
@@ -85,29 +83,6 @@
                 </div>
             </div>
             <!-- /.card -->
-
-            <div class="row my-4">
-                <div class="col">
-                    <h3>Productos sugeridos</h3>
-                </div>
-            </div>
-
-            <div class="row my-4">
-                @forelse ( $suggestedProducts as $product )
-                    <x-ProductCard :productID="$product['ID_Product']" :productName="$product['Name']" :productDescription="$product['Description']" :imageName="$product['Images'][0]['Name']" />
-                @empty
-                    <div class="col">
-                        <div class="col">
-                            <div class="row my-2">
-                                <img class="col-2 img-fluid mx-auto" src="{{ asset('img/magnifying-glass-1976105_640.png') }}" alt="">
-                                <h2 class="text-center">No hemos encontrado productos similares.</h2>
-                            </div>
-                        </div>
-                    </div>
-                @endforelse
-            </div>
-            <!-- /.row -->
-
         </form>
         
     </div>
