@@ -102,18 +102,29 @@
             "MX":100
         };
 
-        $('#map').vectorMap({
-            map: 'world_mill', // el mapa del mundo
+        var myCustomColors = {
+            'AU-SA': '#4E7387',
+            'AU-WA': '#333333',
+            'AU-VIC': '#89AFBF',
+            'AU-TAS': '#817F8E',
+            'AU-QLD': '#344B5E',
+            'AU-NSW': '#344B5E',
+            'AU-ACT': '#344B5E',
+            'AU-NT': '#344B5E'
+        };
+
+        map = new jvm.WorldMap({
+            map: 'world_mill',
+            container: $('#map'),
+            backgroundColor: '#eff7ff',
             series: {
                 regions: [{
                     values: data, // los valores
-                    scale: ['#55FF55', '#555555'], // el rango de colores
-                    normalizeFunction: 'polynomial' // la formula de normalizacion de datos
+                    attribute: 'fill'
                 }]
-            },
-            onRegionTipShow: function(e, el, code){ // al seleccionar una region se muestra el valor que tengan en el array
-                el.html(el.html()+' (Poblacion: '+data[code]+')');
             }
         });
+
+        map.series.regions[0].setValues(myCustomColors);
     </script>
 @endpush
