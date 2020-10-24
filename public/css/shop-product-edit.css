@@ -23,6 +23,11 @@ body {
     top: 0px;
 }
 
+.add-image {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 .carousel-item .product-image {
     width: 100% !important;
     height: 45vh !important;
