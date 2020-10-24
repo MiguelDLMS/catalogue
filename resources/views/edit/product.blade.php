@@ -80,11 +80,9 @@
                 </div>
                 
                 <div class="card-body">
-                    <strong>Latitud: </strong><input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Latitude'] }}">
-                    <br/>
-                    <strong>Longitud: </strong><input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Longitude'] }}">
+                    <strong>Código del país: </strong><input type="text" class="form-control" id="specifications" name="specifications" value="MX">
 
-                    <div id="map" class="map" country-code="MX" longitude="{{ $product['Longitude'] }}"></div>
+                    <div id="map" class="map" country-code="MX"></div>
                 </div>
             </div>
             <!-- /.card -->
