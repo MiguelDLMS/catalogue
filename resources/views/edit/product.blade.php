@@ -107,7 +107,12 @@
 
         var map = $('#map').vectorMap({
             map: 'world_mill', // el mapa del mundo
-            backgroundColor: '#eff7ff',
+            backgroundColor: 'white',
+            regionStyle: {
+                initial: {
+                    fill: "#87C1E8"
+                }
+            },
             series: {
                 regions: [{
                     values: data, // los valores
