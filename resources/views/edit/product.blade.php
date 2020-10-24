@@ -92,36 +92,34 @@
                 </div>
                 <!-- /Modal -->
 
-            <form method="POST" action="{{ route('request.quote') }}">
-                @csrf
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request" disabled>Cotizar</button>
             </div>
-            <!-- /.card -->
+        </div>
+        <!-- /.card -->
 
-            <div class="card card-outline-secondary my-4">
-                <div class="card-header">
-                    Información técnica
-                </div>
-                
-                <div class="card-body">
-                    <input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Technical_Specifications'] }}">
-                </div>
+        <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+                Información técnica
             </div>
-            <!-- /.card -->
-
-            <div class="card card-outline-secondary my-4">
-                <div class="card-header">
-                    Región
-                </div>
-                
-                <div class="card-body">
-                    <strong>Código del país: </strong><input type="text" class="form-control" id="country" name="country" value="MX">
-
-                    <div id="map" class="map" country-code="MX"></div>
-                </div>
+            
+            <div class="card-body">
+                <input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Technical_Specifications'] }}">
             </div>
-            <!-- /.card -->
-        </form>
+        </div>
+        <!-- /.card -->
+
+        <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+                Región
+            </div>
+            
+            <div class="card-body">
+                <strong>Código del país: </strong><input type="text" class="form-control" id="country" name="country" value="MX">
+
+                <div id="map" class="map" country-code="MX"></div>
+            </div>
+        </div>
+        <!-- /.card -->
         
     </div>
     <!-- /.col-lg-8 -->
