@@ -61,11 +61,15 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                @foreach ($product['Images'] as $image)
-                                    <div class="carousel-item">
-                                        <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
-                                    </div>
-                                @endforeach
+                                <div class="row">
+                                    @foreach ($product['Images'] as $image)
+                                        <div class="col-lg-4 col-sm-6 col-12">
+                                            <div class="carousel-item">
+                                                <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
