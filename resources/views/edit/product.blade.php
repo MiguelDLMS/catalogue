@@ -84,7 +84,7 @@
                     <br/>
                     <strong>Longitud: </strong><input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Longitude'] }}">
 
-                    <div id="map" class="map" latitude="{{ $product['Latitude'] }}" longitude="{{ $product['Longitude'] }}"></div>
+                    <div id="map" class="map" country-code="MX" longitude="{{ $product['Longitude'] }}"></div>
                 </div>
             </div>
             <!-- /.card -->
@@ -99,7 +99,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript">
         var data = {
-            "MX": "#4E7387"
+            $('#map').attr('country-code'): "#4E7387"
         };
 
         var map = $('#map').vectorMap({
