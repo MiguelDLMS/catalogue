@@ -13,6 +13,11 @@ body {
 }
 
 .product-image {
+    height: 20vh !important;
+    object-fit: cover;
+}
+
+.carousel-item .product-image {
     width: 100% !important;
     height: 45vh !important;
     object-fit: cover;
