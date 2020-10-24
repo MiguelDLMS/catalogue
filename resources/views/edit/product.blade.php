@@ -99,8 +99,10 @@
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript">
         var data = {
-            $('#map').attr('country-code'): "#4E7387"
+            "'" + $('#map').attr('country-code') + "'": "#4E7387"
         };
+
+        console.log(data);
 
         var map = $('#map').vectorMap({
             map: 'world_mill', // el mapa del mundo
