@@ -21,7 +21,3 @@ body {
 input {
     all: inherit !important;
 }
-
-input:hover {
-    cursor: url("https://img.icons8.com/android/24/000000/pencil.png"), auto;
-}

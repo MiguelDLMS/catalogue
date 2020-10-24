@@ -6,6 +6,7 @@
 
 @push('stylesheets')
     <link href="{{ asset('css/shop-product-edit.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-jvectormap-2.0.5.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
 @endpush
 
@@ -94,19 +95,24 @@
 @endpush
 
 @push('javascripts')
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script type="text/javascript">
-      var map = new ol.Map({
-            target: 'map',
-            layers: [
-            new ol.layer.Tile({
-                source: new ol.source.OSM()
-            })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([parseFloat($('#map').attr('longitude')), parseFloat($('#map').attr('latitude'))]),
-                zoom: 8
-            })
+        var data = {
+            "MX":100
+        };
+
+        $('#map').vectorMap({
+            map: 'world_mill', // el mapa del mundo
+            series: {
+                regions: [{
+                    values: data, // los valores
+                    scale: ['#55FF55', '#555555'], // el rango de colores
+                    normalizeFunction: 'polynomial' // la formula de normalizacion de datos
+                }]
+            },
+            onRegionTipShow: function(e, el, code){ // al seleccionar una region se muestra el valor que tengan en el array
+                el.html(el.html()+' (Poblacion: '+data[code]+')');
+            }
         });
     </script>
 @endpush
