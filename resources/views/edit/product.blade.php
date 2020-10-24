@@ -5,7 +5,7 @@
 @endpush
 
 @push('stylesheets')
-    <link href="{{ asset('css/shop-product.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/shop-product-edit.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
 @endpush
 
@@ -53,56 +53,14 @@
                         <h3 class="card-title">
                             <input type="text" class="form-control" id="name" value="{{ $product['Name'] }}">
                         </h3>
+                        <p class="card-text">
+                            <input type="text" class="form-control" id="name" value="{{ $product['Description'] }}">
+                        </p>
                     </div>
-                    <h3 class="card-title">{{ $product['Name'] }}</h3>
-                    <p class="card-text">{{ $product['Description'] }}</p>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Cotizar</button>
+                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request" disabled>Cotizar</button>
                 </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <form method="POST" action="{{ route('request.quote') }}">
-                                @csrf
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabe">Solicitar cotización</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="name" class="col-form-label">Nombre(s):</label>
-                                        <input type="text" class="form-control" id="name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="last-name" class="col-form-label">Apellido(s):</label>
-                                        <input type="text" class="form-control" id="last-name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" class="col-form-label">Correo electrónico:</label>
-                                        <input type="email" class="form-control" id="email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message" class="col-form-label">Especificaciones de la cotización:</label>
-                                        <textarea class="form-control" id="message"></textarea>
-                                    </div>
-
-                                    <input type="hidden" id="product-name" name="product-name" value="{{ $product['Name'] }}">
-                                    <input type="hidden" id="product-url" name="product-url" value="http://catalogue.acorla.com/product/{{ $product['ID_Product'] }}">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-primary">Enviar solicitud</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Modal -->
             </div>
             <!-- /.card -->
 
@@ -170,12 +128,6 @@
                 center: ol.proj.fromLonLat([parseFloat($('#map').attr('longitude')), parseFloat($('#map').attr('latitude'))]),
                 zoom: 8
             })
-        });
-    </script>
-    <script type="text/javascript">
-        $('#quotation-request').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); // Button that triggered the modal
-            var modal = $(this);
         });
     </script>
 @endpush

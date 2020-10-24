@@ -1,0 +1,23 @@
+/*!
+ * Start Bootstrap - Shop Item (https://startbootstrap.com/templates/shop-item)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-item/blob/master/LICENSE)
+ */
+body {
+    padding-top: 56px;
+}
+
+.map {
+    height: 400px !important;
+    width: 100% !important;
+}
+
+.product-image {
+    width: 100% !important;
+    height: 45vh !important;
+    object-fit: cover;
+}
+
+input {
+    all: inherit !important;
+}
