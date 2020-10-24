@@ -100,7 +100,7 @@
     <script type="text/javascript">
         var code = $('#map').attr('country-code');
         var data = {
-            [code]: "#4E7387"
+            [code]: "#1A2F40"
         };
 
         console.log(data);
@@ -110,7 +110,7 @@
             backgroundColor: 'white',
             regionStyle: {
                 initial: {
-                    fill: "#87C1E8"
+                    fill: "#65BAFF"
                 }
             },
             series: {
