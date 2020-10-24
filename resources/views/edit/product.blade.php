@@ -108,7 +108,7 @@
             series: {
                 regions: [{
                     values: data, // los valores
-                    attribute: 'fill'
+                    attribute: 'fill',
                     normalizeFunction: 'polynomial' // la formula de normalizacion de datos
                 }]
             },
