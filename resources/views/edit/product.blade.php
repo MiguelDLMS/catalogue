@@ -98,7 +98,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript">
-        var code = ('#map').attr('country-code');
+        var code = $('#map').attr('country-code');
         var data = {
             [code]: "#4E7387"
         };
