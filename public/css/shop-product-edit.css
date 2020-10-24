@@ -13,8 +13,8 @@ body {
 }
 
 .product-image {
-    width: 200em !important;
-    height: 200em !important;
+    width: 10em !important;
+    height: 10em !important;
     object-fit: cover;
 }
 

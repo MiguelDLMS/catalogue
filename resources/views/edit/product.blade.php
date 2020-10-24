@@ -62,15 +62,9 @@
                             </div>
                             <div class="modal-body">
                                 @foreach ($product['Images'] as $image)
-                                    @if ($loop->first)
-                                        <div class="carousel-item active">
-                                            <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
-                                        </div>
-                                    @else
-                                        <div class="carousel-item">
-                                            <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
-                                        </div>
-                                    @endif
+                                    <div class="carousel-item">
+                                        <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                                    </div>
                                 @endforeach
                             </div>
                             <div class="modal-footer">
