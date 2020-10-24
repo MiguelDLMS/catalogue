@@ -79,9 +79,9 @@
                 </div>
                 
                 <div class="card-body">
-                    <h4>Latitud: </h4><input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Latitude'] }}">
+                    <strong>Latitud: </strong><input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Latitude'] }}">
                     <br/>
-                    <h4>Longitud: </h4><input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Longitude'] }}">
+                    <strong>Longitud: </strong><input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Longitude'] }}">
 
                     <div id="map" class="map" latitude="{{ $product['Latitude'] }}" longitude="{{ $product['Longitude'] }}"></div>
                 </div>
