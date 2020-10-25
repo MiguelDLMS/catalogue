@@ -140,6 +140,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript">
         $("#imagesButton").click(function() {
+            alert("hola");
             $("#images").click();
         });
     </script>
