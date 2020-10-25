@@ -144,9 +144,12 @@
             $("#images").click();
         });
 
-        $("#delete-image").click(function() {
+        $(".delete-image").click(function() {
             console.log($("#delete-images").attr("images") + ";" + $(this).attr("image"));
+
             $("#delete-images").attr("images", $("#delete-images").attr("images") + ";" + $(this).attr("image"));
+            
+            $(this).remove();
         });
     </script>
     <script type="text/javascript">
