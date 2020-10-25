@@ -47,18 +47,18 @@
             </div>
         </nav>
 
-        <div class="container main">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-12">
-                    <x-CategoryMenu/>
-                </div>
-
-                <!-- Content -->
-                @stack('content')
+        <div class="row">
+            <div class="col-lg-3 col-10">
+                <x-CategoryMenu/>
             </div>
-            <!-- /.row -->
+
+            <div class="col-lg-9 col-12">
+                <div class="container main">
+                    <!-- Content -->
+                    @stack('content')
+                </div>
+            </div>
         </div>
-        <!-- /.container -->
 
         <!-- Footer -->
         <footer class="py-5 bg-dark">
