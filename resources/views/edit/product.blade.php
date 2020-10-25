@@ -164,6 +164,34 @@
         $("#cancel-images").click(function() {
             $( "div[style='display: none;']" ).show(500);
         });
+
+        $("#country").change(function() {
+            var code = $('#map').val();
+            var data = {
+                [code]: "#1A2F40"
+            };
+
+            var map = $('#map').vectorMap({
+                map: 'world_mill', // el mapa del mundo
+                backgroundColor: 'white',
+                regionStyle: {
+                    initial: {
+                        fill: "#65BAFF"
+                    }
+                },
+                series: {
+                    regions: [{
+                        values: data, // los valores
+                        attribute: 'fill',
+                        normalizeFunction: 'polynomial' // la formula de normalizacion de datos
+                    }]
+                },
+                onRegionTipShow: function(e, el, code){ // al seleccionar una region se muestra el valor que tengan en el array
+                    el.html(el.html());
+                }
+            });
+
+        });
     </script>
     <script type="text/javascript">
         var code = $('#map').attr('country-code');
