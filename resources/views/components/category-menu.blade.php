@@ -1,6 +1,6 @@
-<div class="col-12" style="padding:0px">
+<div class="col-12">
     <nav id="sidebar">
-        <div class="my-4 sidebar-header">
+        <div class="my-3 sidebar-header">
             <h3>Paises</h3>
         </div>
 
