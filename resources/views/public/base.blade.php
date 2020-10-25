@@ -47,11 +47,9 @@
         </nav>
 
         <div class="row">
-            <div class="col-lg-3 col-10" style="padding:0px">
+            <div class="col-12">
                 <x-CategoryMenu/>
-            </div>
 
-            <div class="col-lg-9 col-12">
                 <div class="container main">
                     <!-- Content -->
                     @stack('content')
