@@ -70,7 +70,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input id="images" name="images" style="visibility:hidden !important;" type="file" multiple>
+                                    <input id="images" name="images" style="visibility:hidden !important; height: 0px !important; padding: 0px !important;" type="file" multiple>
                                     <div class="row">
                                         @foreach ($product['Images'] as $image)
                                             <div class="col-lg-4 col-sm-6 col-12">
