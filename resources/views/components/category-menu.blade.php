@@ -4,10 +4,10 @@
             <h3 class="px1">Paises</h3>
         </div>
 
-        <ul class="list-unstyled components px-4">
+        <ul class="list-unstyled components">
             @foreach ( $categories as $category )
                 <li>
-                    <a href="{{ url('category/'.$category->Name) }}">{{ $category->Name }}</a>
+                    <a class="px-4" href="{{ url('category/'.$category->Name) }}">{{ $category->Name }}</a>
                 </li>
             @endforeach
         </ul>
