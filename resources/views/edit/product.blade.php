@@ -90,7 +90,7 @@
 
                                             </button>
                                             
-                                            <input id="images" name="images" style="top:-100vh;" type="file" multiple>
+                                            <input id="images" name="images" style="visibility:hidden !important;" type="file" multiple>
                                         </div>
                                     </div>
                                 </div>
