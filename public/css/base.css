@@ -5,6 +5,7 @@ body {
 .main {
     min-height: 100vh;
     min-width: calc(100vw - 250px);
+    max-width: calc(100vw - 250px);
 }
 
 .navbar-brand img {
