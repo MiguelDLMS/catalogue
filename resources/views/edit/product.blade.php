@@ -165,11 +165,13 @@
             $( "div[style='display: none;']" ).show(500);
         });
 
-        $("#country").change(function() {
-            var code = $('#map').val();
+        $("#country").on("input", function() {
+            var code = $(this).val();
             var data = {
                 [code]: "#1A2F40"
             };
+
+            $('#map').empty();
 
             var map = $('#map').vectorMap({
                 map: 'world_mill', // el mapa del mundo
