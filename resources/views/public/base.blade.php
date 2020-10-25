@@ -18,12 +18,12 @@
                 <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                     <a class="navbar-brand" href="https://www.acorla.com">
                         <img src="{{ asset('img/acorla-logo-white.png') }}" alt="Logo">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    </a>
+                </div>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
                             <i class="fas fa-align-left"></i>
                             <span>Toggle Sidebar</span>
                         </button>
-                    </a>
-                </div>
                 <div class="mx-auto order-0">
                     <a class="navbar-brand mx-auto" href="{{ url('/') }}">
                         <h2>Catálogo Latam</h2>
