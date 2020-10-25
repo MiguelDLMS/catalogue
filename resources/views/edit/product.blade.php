@@ -140,16 +140,21 @@
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript">
+        var first = true;
+
         $("#images-button").click(function() {
             $("#images").click();
         });
 
         $(".delete-image").click(function() {
-            console.log($("#delete-images").attr("images") + ";" + $(this).attr("image"));
+            if (first) {
+                $("#delete-images").attr("images", $(this).attr("image"));
+            } else {
+                $("#delete-images").attr("images", $("#delete-images").attr("images") + ";" + $(this).attr("image"));
+            }
 
-            $("#delete-images").attr("images", $("#delete-images").attr("images") + ";" + $(this).attr("image"));
-            
-            $(this).remove();
+
+            $(this).parent().remove();
         });
     </script>
     <script type="text/javascript">
