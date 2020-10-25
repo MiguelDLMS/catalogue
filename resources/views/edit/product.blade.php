@@ -72,9 +72,10 @@
                                 <div class="modal-body">
                                     <input id="images" name="images" style="visibility:hidden !important; height: 0px !important; padding: 0px !important;" type="file" multiple>
                                     <div class="row">
+                                        <input type="hidden" id="delete-images" name="delete-images" value="">
                                         @foreach ($product['Images'] as $image)
                                             <div class="col-lg-4 col-sm-6 col-12">
-                                            <button type="button" class="btn btn-danger delete-image">
+                                                <button type="button" class="btn btn-danger delete-image" image="{{ $image['Name'] }}">
                                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
                                                     </svg>
@@ -84,7 +85,7 @@
                                         @endforeach
 
                                         <div class="col-lg-4 col-sm-6 col-12">
-                                            <button id="imagesButton" type="button" class="btn btn-light add-image">
+                                            <button id="images-button" type="button" class="btn btn-light add-image">
                                                 <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-cloud-arrow-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 5.146l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 1 0V6.707l1.146 1.147a.5.5 0 0 0 .708-.708z"/>
                                                 </svg>
@@ -139,8 +140,12 @@
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript">
-        $("#imagesButton").click(function() {
+        $("#images-button").click(function() {
             $("#images").click();
+        });
+
+        $("#delete-image").click(function() {
+            $("#delete-images").val($("#delete-images").val() + ";" + $(this).attr("image"));
         });
     </script>
     <script type="text/javascript">
