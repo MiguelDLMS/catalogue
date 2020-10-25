@@ -47,13 +47,11 @@
         </nav>
 
         <div class="row">
-            <div class="col-12">
-                <x-CategoryMenu/>
+            <x-CategoryMenu/>
 
-                <div class="container main">
-                    <!-- Content -->
-                    @stack('content')
-                </div>
+            <div class="container main">
+                <!-- Content -->
+                @stack('content')
             </div>
         </div>
 
