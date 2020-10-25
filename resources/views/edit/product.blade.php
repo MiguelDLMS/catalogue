@@ -149,6 +149,7 @@
         $(".delete-image").click(function() {
             if (first) {
                 $("#delete-images").attr("images", $(this).attr("image"));
+                first = false;
             } else {
                 $("#delete-images").attr("images", $("#delete-images").attr("images") + ";" + $(this).attr("image"));
             }
