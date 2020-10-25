@@ -48,7 +48,7 @@
         </nav>
 
         <div class="row">
-            <div class="col-lg-3 col-10">
+            <div class="col-lg-3 col-10" style="padding:0px">
                 <x-CategoryMenu/>
             </div>
 
