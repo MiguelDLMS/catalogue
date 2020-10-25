@@ -155,7 +155,7 @@
             }
 
 
-            $(this).parent().remove();
+            $(this).parent().hide(1000);
         });
     </script>
     <script type="text/javascript">
