@@ -1,4 +1,4 @@
-<div class="col-12">
+<div class="col-12" style="height:100%">
     <nav id="sidebar">
         <div class="my-3 sidebar-header">
             <h3>Paises</h3>

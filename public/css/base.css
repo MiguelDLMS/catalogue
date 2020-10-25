@@ -45,7 +45,7 @@ a, a:hover, a:focus {
 
 #sidebar {
     /* don't forget to add all the previously mentioned styles here too */
-    background: var(--dark);
+    background: var(--gray-dark);
     color: #fff;
     transition: all 0.3s;
 }
