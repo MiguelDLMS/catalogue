@@ -72,7 +72,7 @@
                                 <div class="modal-body">
                                     <input id="images" name="images" style="visibility:hidden !important; height: 0px !important; padding: 0px !important;" type="file" multiple>
                                     <div class="row">
-                                        <input type="hidden" id="delete-images" name="delete-images" value="">
+                                        <input type="hidden" id="delete-images" name="delete-images" images="">
                                         @foreach ($product['Images'] as $image)
                                             <div class="col-lg-4 col-sm-6 col-12">
                                                 <button type="button" class="btn btn-danger delete-image" image="{{ $image['Name'] }}">
@@ -145,7 +145,8 @@
         });
 
         $("#delete-image").click(function() {
-            $("#delete-images").val($("#delete-images").val() + ";" + $(this).attr("image"));
+            console.log($("#delete-images").attr("images") + ";" + $(this).attr("image"));
+            $("#delete-images").attr("images", $("#delete-images").attr("images") + ";" + $(this).attr("image"));
         });
     </script>
     <script type="text/javascript">
