@@ -20,10 +20,6 @@
                         <img src="{{ asset('img/acorla-logo-white.png') }}" alt="Logo">
                     </a>
                 </div>
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                            <i class="fas fa-align-left"></i>
-                            <span>Toggle Sidebar</span>
-                        </button>
                 <div class="mx-auto order-0">
                     <a class="navbar-brand mx-auto" href="{{ url('/') }}">
                         <h2>Catálogo Latam</h2>
@@ -41,6 +37,14 @@
                                     <input type="text" class="form-control" name="search" id="search" placeholder="Buscar" required>
                                 </div>
                             </form>
+                        </li>
+                        <li>
+                            <button type="button" id="sidebarCollapse" class="btn btn-dark">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-menu-app-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M0 1.5A1.5 1.5 0 0 1 1.5 0h2A1.5 1.5 0 0 1 5 1.5v2A1.5 1.5 0 0 1 3.5 5h-2A1.5 1.5 0 0 1 0 3.5v-2zM14 7H2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zM2 6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H2z"/>
+                                    <path fill-rule="evenodd" d="M15 11H1v-1h14v1zM2 12.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
+                                </svg>
+                            </button>
                         </li>
                     </ul>
                 </div>
