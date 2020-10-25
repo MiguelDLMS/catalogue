@@ -89,8 +89,6 @@
                                                 </svg>
 
                                             </button>
-                                            
-                                            <input id="images" name="images" style="visibility:hidden !important;" type="file" multiple>
                                         </div>
                                     </div>
                                 </div>
