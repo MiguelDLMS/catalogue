@@ -65,7 +65,7 @@
                                 @csrf
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modalLabe">Imágenes</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <button id="cancel-images" type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <button id="save-images" type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
                             </form>
                         </div>
@@ -154,8 +154,15 @@
                 $("#delete-images").attr("images", $("#delete-images").attr("images") + ";" + $(this).attr("image"));
             }
 
+            $(this).parent().hide(500);
+        });
 
-            $(this).parent().hide(1000);
+        $("#save-images").click(function() {
+            $( "div[style='display: none;']" ).remove();
+        });
+
+        $("#cancel-images").click(function() {
+            $( "div[style='display: none;']" ).show(500);
         });
     </script>
     <script type="text/javascript">
