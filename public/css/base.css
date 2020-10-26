@@ -34,12 +34,13 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
     #sidebar {
         margin-left: -250px;
         position: fixed;
         min-height: 100vh;
         max-height: 100vh;
+        z-index: 1000;
     }
     #sidebar.active {
         margin-left: 0;
