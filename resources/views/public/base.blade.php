@@ -50,8 +50,11 @@
             <x-CategoryMenu/>
 
             <div class="container main">
-                <!-- Content -->
-                @stack('content')
+                <div class="col-lg-9 col-md-8 col-12 mx-auto">
+
+                    <!-- Content -->
+                    @stack('content')
+                </div>
             </div>
         </div>
 
