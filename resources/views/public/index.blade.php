@@ -9,7 +9,7 @@
 @endpush
 
 @push('content')
-    <div class="col-9">
+    <div class="col-lg-9 col-md-8 col-10">
         <div class="row my-4">
             @forelse ( $products as $product )
                 <x-ProductCard :productID="$product['ID_Product']" :productName="$product['Name']" :productDescription="$product['Description']" :imageName="$product['Images'][0]['Name']" />

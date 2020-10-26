@@ -2,6 +2,10 @@ body {
     overflow-x: hidden;
 }
 
+.wrapper {
+    display: block;
+}
+
 .main {
     min-height: 100vh;
     min-width: calc(100vw - 250px);
@@ -15,7 +19,12 @@ body {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    min-height: 100% !important;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* top layer */
+    z-index: 9999;
 }
 
 #sidebar.active {
