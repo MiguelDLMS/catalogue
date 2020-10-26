@@ -49,7 +49,7 @@
         <div class="row">
             <x-CategoryMenu/>
 
-            <div class="container">
+            <div class="main">
                 <!-- Content -->
                 @stack('content')
             </div>
