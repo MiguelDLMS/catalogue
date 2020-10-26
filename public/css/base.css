@@ -43,7 +43,7 @@ a[data-toggle="collapse"] {
         z-index: 1000;
     }
     #sidebar.active {
-        margin-left: 0;
+        margin-left: 15px;
     }
 
     .main {
