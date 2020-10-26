@@ -1,4 +1,4 @@
-<nav id="sidebar">
+<nav id="sidebar" style="height:100%">
     <div class="p-3 sidebar-header">
         <h3 class="px1">Paises</h3>
     </div>
