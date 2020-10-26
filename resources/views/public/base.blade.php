@@ -46,9 +46,9 @@
             </div>
         </nav>
 
-        <div class="row">
-            <x-CategoryMenu/>
+        <x-CategoryMenu/>
 
+        <div class="row">
             <div class="container main">
                 <!-- Content -->
                 @stack('content')
