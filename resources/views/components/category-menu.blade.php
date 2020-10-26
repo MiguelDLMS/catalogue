@@ -1,4 +1,8 @@
 <nav id="sidebar">
+    <div id="dismiss">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+
     <div class="p-3 sidebar-header">
         <h3 class="px1">Paises</h3>
     </div>
