@@ -3,15 +3,46 @@
         <i class="fas fa-arrow-left"></i>
     </div>
 
-    <div class="p-3 sidebar-header">
-        <h3 class="px1">Paises</h3>
+    <div class="sidebar-header">
+        <h3>Bootstrap Sidebar</h3>
     </div>
 
     <ul class="list-unstyled components">
-        @foreach ( $categories as $category )
-            <li>
-                <a class="px-4" href="{{ url('category/'.$category->Name) }}">{{ $category->Name }}</a>
-            </li>
-        @endforeach
+        <p>Dummy Heading</p>
+        <li class="active">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="#">Home 1</a>
+                </li>
+                <li>
+                    <a href="#">Home 2</a>
+                </li>
+                <li>
+                    <a href="#">Home 3</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">About</a>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="#">Page 1</a>
+                </li>
+                <li>
+                    <a href="#">Page 2</a>
+                </li>
+                <li>
+                    <a href="#">Page 3</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Portfolio</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
     </ul>
 </nav>
