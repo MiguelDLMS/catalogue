@@ -37,9 +37,18 @@ a[data-toggle="collapse"] {
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
+        position: fixed;
+        min-height: 100vh;
+        max-height: 100vh;
     }
     #sidebar.active {
         margin-left: 0;
+    }
+
+    .main {
+        min-height: 100vh;
+        min-width: 100vw;
+        max-width: 100vw;
     }
 }
 
