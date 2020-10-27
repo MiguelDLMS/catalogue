@@ -178,6 +178,6 @@ Route::post('/request-quote', [
 ]);
 
 Route::post('/update-product-images', [
-    'uses' => 'App\Http\Controllers\MyController@update',
+    'uses' => 'App\Http\Controllers\ProductsController@update',
     'as' => 'update.product.images'
 ]);
