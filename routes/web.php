@@ -177,7 +177,7 @@ Route::post('/request-quote', [
     'as' => 'request.quote'
 ]);
 
-Route::post('/update-product-images', [
+Route::post('/update-product-images/product/{id}', [
     'uses' => 'App\Http\Controllers\ProductsController@update',
     'as' => 'update.product.images'
 ]);
