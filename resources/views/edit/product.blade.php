@@ -217,10 +217,13 @@
             });
         }
 
-        $("#country").on("input", paintMap());
-
         $(document).ready(function() {
             paintMap($('#map').val());
+
+            $("#country").on("input", function () {
+                paintMap();
+                alert("g");
+            });
         });
     </script>
 @endpush
