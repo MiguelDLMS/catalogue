@@ -72,14 +72,13 @@ class ProductsController extends Controller {
       if($request->hasFile('insertImages')) {
          foreach ($files as $file) {
             $name = $file->getClientOriginalName();
-            $file->store('/img/products/');
-            return response($name, 200)->header('Content-Type', 'text/plain');
+            $file->store('/public/img/products/');
          }
 
          return response("Images updated", 200)->header('Content-Type', 'text/plain');
       }
 
-      return response($request, 512)->header('Content-Type', 'text/plain');
+      return response("Images not found", 512)->header('Content-Type', 'text/plain');
    }
    public function destroy($id) {
       echo 'destroy';
