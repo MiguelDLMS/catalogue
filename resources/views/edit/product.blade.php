@@ -215,10 +215,9 @@
             });
         }
 
-        $("#country").on("input", paintMap());
-
         $(document).ready(function() {
             paintMap();
+            $("#country").on("input", paintMap());
         });
     </script>
 @endpush
