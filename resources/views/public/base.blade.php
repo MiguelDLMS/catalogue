@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                     <a class="navbar-brand" href="https://www.acorla.com">
-                        <img src="{{ asset('img/acorla-logo-white.png') }}" alt="Logo">
+                        <img src="{{ asset('images/acorla-logo-white.png') }}" alt="Logo">
                     </a>
                 </div>
                 <button class="navbar-toggler" data-toggle="collapse" type="button" id="sidebarCollapse">

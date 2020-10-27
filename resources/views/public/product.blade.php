@@ -27,11 +27,11 @@
                 @foreach ($product['Images'] as $image)
                     @if ($loop->first)
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid product-image" src="{{ asset('storage/img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                            <img class="d-block img-fluid product-image" src="{{ asset('products/images/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
                         </div>
                     @else
                         <div class="carousel-item">
-                            <img class="d-block img-fluid product-image" src="{{ asset('storage/img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                            <img class="d-block img-fluid product-image" src="{{ asset('products/images/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
                         </div>
                     @endif
                 @endforeach
@@ -133,7 +133,7 @@
             <div class="col">
                 <div class="col">
                     <div class="row my-2">
-                        <img class="col-2 img-fluid mx-auto" src="{{ asset('img/magnifying-glass-1976105_640.png') }}" alt="">
+                        <img class="col-2 img-fluid mx-auto" src="{{ asset('images/magnifying-glass-1976105_640.png') }}" alt="">
                         <h2 class="text-center">No hemos encontrado productos similares.</h2>
                     </div>
                 </div>
