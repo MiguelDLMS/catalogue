@@ -71,7 +71,6 @@ class ProductController extends Controller
     {
         echo $request;
         usleep(20000000);
-
     }
 
     /**
