@@ -170,8 +170,7 @@
             });
 
             $("#save-images").click(function (e) {
-                alert("Hi.
-                ");
+                alert("Hi");
                 e.preventDefault();
 
                 var _token = $("input[name='_token']").val();
