@@ -77,7 +77,6 @@ class ProductsController extends Controller {
 
       echo 'update' . '\n';
       echo $id . '\n';
-      echo $request->input('images') . '\n';
       echo $request . '\n';
    }
    public function destroy($id) {
