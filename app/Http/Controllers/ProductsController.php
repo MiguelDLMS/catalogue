@@ -24,6 +24,8 @@ class ProductsController extends Controller {
    }
    public function update(Request $request, $id) {
       echo 'update';
+      echo $id;
+      echo $request;
    }
    public function destroy($id) {
       echo 'destroy';

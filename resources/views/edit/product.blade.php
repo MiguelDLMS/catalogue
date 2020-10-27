@@ -15,9 +15,8 @@
     <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form method="POST" action="{{ route('update.product.images') }}">
+                <form action="{!! action('PostController@update', ['id' => $product['ID_Product']]) !!}" method="post">
                     @csrf
-                    <input id="product-id" name="product-id" type="hidden" value="{{ $product['ID_Product'] }}">
                     <input id="images" name="images" style="visibility:hidden !important; height: 0px !important; padding: 0px !important;" type="file" accept="image/*" multiple>
                     <input type="hidden" id="delete-images" name="delete-images" images="">
 
