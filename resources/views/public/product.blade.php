@@ -25,11 +25,11 @@
                 @foreach ($product['Images'] as $image)
                     @if ($loop->first)
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                            <img class="d-block img-fluid product-image" src="{{ asset('storage/img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
                         </div>
                     @else
                         <div class="carousel-item">
-                            <img class="d-block img-fluid product-image" src="{{ asset('img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
+                            <img class="d-block img-fluid product-image" src="{{ asset('storage/img/products/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
                         </div>
                     @endif
                 @endforeach
