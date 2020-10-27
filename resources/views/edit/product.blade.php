@@ -194,7 +194,7 @@
                     }
                 });
 
-                $("#images-modal").modal('hide');
+                $(".modal.fade").modal('hide');
             });
         });
     </script>
