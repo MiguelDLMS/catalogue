@@ -179,6 +179,7 @@
                 })
                 .done(function(req, res) {
                     console.log(req.body);
+                    console.log(res.body);
                 });
 
                 e.preventDefault();
