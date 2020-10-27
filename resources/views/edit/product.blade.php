@@ -177,8 +177,8 @@
                     processData: false,
                     contentType: false
                 })
-                .done(function(res) {
-                    console.log(res);
+                .done(function(req, res) {
+                    console.log(req.body);
                 });
 
                 e.preventDefault();

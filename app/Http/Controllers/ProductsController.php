@@ -78,7 +78,7 @@ class ProductsController extends Controller {
          return response("Images updated", 200)->header('Content-Type', 'text/plain');
       }
 
-      return response("Images not found", 512)->header('Content-Type', 'text/plain');
+      return response($id, 512)->header('Content-Type', 'text/plain');
    }
    public function destroy($id) {
       echo 'destroy';
