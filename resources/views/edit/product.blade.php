@@ -140,6 +140,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
+    
     <script type="text/javascript">
         $(document).ready(function () {
             var first = true;

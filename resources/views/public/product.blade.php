@@ -142,8 +142,10 @@
 @endpush
 
 @push('javascripts')
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
+    
     <script type="text/javascript">
         $('#quotation-request').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
