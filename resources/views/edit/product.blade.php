@@ -195,6 +195,7 @@
                 });
 
                 $('#images-form').trigger("reset");
+                $('#images-modal').parent().modal('hide');
             });
         });
     </script>
