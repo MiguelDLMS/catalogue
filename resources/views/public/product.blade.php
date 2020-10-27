@@ -113,7 +113,7 @@
         </div>
         
         <div class="card-body">
-            <div id="map" class="map" latitude="{{ $product['Latitude'] }}" longitude="{{ $product['Longitude'] }}"></div>
+            <div id="map" class="map" country-code="MX"></div>
         </div>
     </div>
     <!-- /.card -->
@@ -143,20 +143,7 @@
 
 @push('javascripts')
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
-    <script type="text/javascript">
-      var map = new ol.Map({
-            target: 'map',
-            layers: [
-            new ol.layer.Tile({
-                source: new ol.source.OSM()
-            })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([parseFloat($('#map').attr('longitude')), parseFloat($('#map').attr('latitude'))]),
-                zoom: 8
-            })
-        });
-    </script>
+    <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
     <script type="text/javascript">
         $('#quotation-request').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
