@@ -178,8 +178,8 @@
                     contentType: false
                 })
                 .done(function(req, res) {
-                    console.log(req.body);
-                    console.log(res.body);
+                    console.log(JSON.stringify(req.body));
+                    console.log(JSON.stringify(res));
                 });
 
                 e.preventDefault();
