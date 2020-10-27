@@ -2,6 +2,9 @@ function paintMap(code = '') {
     if (code == '') {
         code = $('#country').val();
     }
+    if (code == '') {
+        code = $('#country').val();
+    }
     var data = {
         [code]: "#1A2F40"
     };
@@ -30,7 +33,7 @@ function paintMap(code = '') {
 }
 
 $(document).ready(function() {
-    paintMap($('#map').val());
+    paintMap($('#map').attr("country-code"));
 
     $("#country").on("input", function () {
         paintMap();
