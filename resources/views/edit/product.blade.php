@@ -17,7 +17,7 @@
             <div class="modal-content">
                 <form action="{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input id="images" name="images" style="visibility:hidden !important; height: 0px !important; padding: 0px !important;" type="file" accept="image/*" multiple>
+                    <input id="images" name="images[]" style="visibility:hidden !important; height: 0px !important; padding: 0px !important;" type="file" accept="image/*" multiple>
                     <input type="hidden" id="delete-images" name="delete-images" images="">
 
                     <div class="modal-header">
