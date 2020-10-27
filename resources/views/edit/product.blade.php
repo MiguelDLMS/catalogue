@@ -15,7 +15,7 @@
     <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}" method="post">
+                <form action="{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input id="images" name="images" style="visibility:hidden !important; height: 0px !important; padding: 0px !important;" type="file" accept="image/*" multiple>
                     <input type="hidden" id="delete-images" name="delete-images" images="">
