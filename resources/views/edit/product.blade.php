@@ -183,6 +183,8 @@
                 $.ajax({
                     url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
+                    processData: false,
+                    contentType: false,
                     data: formData,
                     success: function(result) {
                         console.log(result);
