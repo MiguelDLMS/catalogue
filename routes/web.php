@@ -168,7 +168,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('product/{id}/edit', functi
 // Forms
 
 Route::post('/search', [
-    'uses' => 'App\Http\Controllers\SearchProductFormController@Search',
+    'uses' => 'App\Http\Controllers\ProductsController@Search',
     'as' => 'search.product'
 ]);
 
