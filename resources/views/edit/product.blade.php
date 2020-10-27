@@ -170,6 +170,8 @@
             });
 
             $("#images-form").submit(function(e) {
+                e.preventDefault();
+
                 console.log(new FormData(this));
                 console.log(this);
                 $.ajax({
@@ -187,7 +189,6 @@
                 });
 
                 $("#images-modal").hide();
-                e.preventDefault();
             });
         });
     </script>
