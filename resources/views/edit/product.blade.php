@@ -188,7 +188,7 @@
     <script type="text/javascript">
         function paintMap(code = "") {
             if (code == "") {
-                code = $(this).val();
+                code = $('#map').val();
             }
             var data = {
                 [code]: "#1A2F40"
