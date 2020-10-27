@@ -140,33 +140,33 @@
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
     <script type="text/javascript">
-        var first = true;
+        $(document).ready(function () {
+            var first = true;
 
-        $("#images-button").click(function() {
-            $("#images").click();
-        });
+            $("#images-button").click(function() {
+                $("#images").click();
+            });
 
-        $(".delete-image").click(function() {
-            if (first) {
-                $("#delete-images").attr("images", $(this).attr("image"));
-                first = false;
-            } else {
-                $("#delete-images").attr("images", $("#delete-images").attr("images") + ";" + $(this).attr("image"));
-            }
+            $(".delete-image").click(function() {
+                if (first) {
+                    $("#delete-images").attr("images", $(this).attr("image"));
+                    first = false;
+                } else {
+                    $("#delete-images").attr("images", $("#delete-images").attr("images") + ";" + $(this).attr("image"));
+                }
 
-            $(this).parent().hide(500);
-        });
+                $(this).parent().hide(500);
+            });
 
-        $("#save-images").click(function() {
-            $( "div[style='display: none;']" ).remove();
-        });
+            $("#save-images").click(function() {
+                $( "div[style='display: none;']" ).remove();
+            });
 
-        $("#cancel-images").click(function() {
-            $( "div[style='display: none;']" ).show(500);
-        });
+            $("#cancel-images").click(function() {
+                $( "div[style='display: none;']" ).show(500);
+            });
 
-        $(document).ready(function() {
-            $("#save-images").click(function(e) {
+            $("#save-images").click(function (e) {
                 e.preventDefault();
 
                 var _token = $("input[name='_token']").val();
