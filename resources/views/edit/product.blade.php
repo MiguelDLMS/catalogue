@@ -59,9 +59,9 @@
     </div>
     <!-- /Modal -->
 
-    <div class="card mt-4">
-        <form method="POST" action="{{ route('request.quote') }}">
-        @csrf
+    <form method="POST" action="{{ route('request.quote') }}">
+    @csrf
+        <div class="card mt-4">
             <div id="carouselExampleIndicators" class="carousel slide  card-img-top img-fluid" data-ride="carousel">
                 <ol class="carousel-indicators">
                     @for ( $i = 0; $i < count($product['Images']); $i++ )
@@ -132,9 +132,9 @@
 
                 <div id="map" class="map" country-code="MX"></div>
             </div>
-        </form>
-    </div>
-    <!-- /.card -->
+        </div>
+        <!-- /.card -->
+    </form>
 @endpush
 
 @push('javascripts')
