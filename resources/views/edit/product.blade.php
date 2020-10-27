@@ -186,8 +186,10 @@
         });
     </script>
     <script type="text/javascript">
-        function paintMap() {
-            var code = $(this).val();
+        function paintMap(code = "") {
+            if (code == "") {
+                code = $(this).val();
+            }
             var data = {
                 [code]: "#1A2F40"
             };
@@ -216,7 +218,7 @@
         }
 
         $(document).ready(function() {
-            paintMap();
+            paintMap($('#map').attr('country-code'));
             $("#country").on("input", paintMap());
         });
     </script>
