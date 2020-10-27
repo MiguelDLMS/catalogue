@@ -73,6 +73,7 @@ class ProductsController extends Controller {
          foreach ($files as $file) {
             $name = $file->getClientOriginalName();
             $file->store('/img/products/');
+            return response($name, 200)->header('Content-Type', 'text/plain');
          }
 
          return response("Images updated", 200)->header('Content-Type', 'text/plain');
