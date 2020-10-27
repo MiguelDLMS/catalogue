@@ -174,6 +174,7 @@
 
                 var formData = new FormData();
 
+                formData.append("_token", "{{ csrf_token() }}");
                 $.each($("#images")[0].files, function(i, file) {
                     formData.append('insertImages', file);
                 });
