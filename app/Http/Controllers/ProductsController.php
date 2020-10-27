@@ -66,7 +66,7 @@ class ProductsController extends Controller {
    public function edit($id) {
       echo 'edit';
    }
-   public function update(Request $request, $id) {
+   public function update(Request $request) {
       $files = $request->file('insertImages');
 
       if($request->hasFile('insertImages')) {
@@ -78,7 +78,7 @@ class ProductsController extends Controller {
          return response("Images updated", 200)->header('Content-Type', 'text/plain');
       }
 
-      return response($id, 512)->header('Content-Type', 'text/plain');
+      return response($request, 512)->header('Content-Type', 'text/plain');
    }
    public function destroy($id) {
       echo 'destroy';
