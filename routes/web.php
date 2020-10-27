@@ -181,3 +181,5 @@ Route::post('product/{id}/update-images', [
     'uses' => 'App\Http\Controllers\ProductsController@update',
     'as' => 'update.product.images'
 ]);
+
+Route::get('image/{filename}', 'ImagesController@displayImage')->name('image.displayImage');
