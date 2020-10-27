@@ -71,13 +71,10 @@ class ProductsController extends Controller {
 
       if($request->hasFile('images')) {
          foreach ($files as $file) {
-            $file->store('/public/img/products/');
+            $name = $file->getClientOriginalName();
+            $file->store('/public/img/products/' . $name);
          }
       }
-
-      echo 'update' . '\n';
-      echo $id . '\n';
-      echo $request . '\n';
    }
    public function destroy($id) {
       echo 'destroy';
