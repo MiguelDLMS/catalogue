@@ -13,8 +13,8 @@
 
 @push('content')
     <!-- Modal -->
-    <div id="images-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div id="images-modal" class="modal-dialog" role="document">
             <div class="modal-content">
                 <form id="images-form" action="{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -195,7 +195,7 @@
                 });
 
                 $('#images-form').trigger("reset");
-                $('#images-modal').modal('hide');
+                $('#modal').modal('hide');
             });
         });
     </script>
