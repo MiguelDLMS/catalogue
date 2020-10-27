@@ -67,9 +67,9 @@ class ProductsController extends Controller {
       echo 'edit';
    }
    public function update(Request $request, $id) {
-      $files = $request->file('images');
+      $files = $request->file('insertImages');
 
-      if($request->hasFile('images')) {
+      if($request->hasFile('insertImages')) {
          foreach ($files as $file) {
             $name = $file->getClientOriginalName();
             $file->store('/public/img/products/');
