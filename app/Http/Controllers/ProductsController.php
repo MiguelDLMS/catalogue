@@ -72,7 +72,7 @@ class ProductsController extends Controller {
       if($request->hasFile('insertImages')) {
          foreach ($files as $file) {
             $name = $file->getClientOriginalName();
-            $file->store('/public/img/products/');
+            $file->store('/img/products/');
          }
 
          return response("Images updated", 200)->header('Content-Type', 'text/plain');
