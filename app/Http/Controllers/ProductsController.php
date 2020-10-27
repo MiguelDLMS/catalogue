@@ -74,7 +74,7 @@ class ProductsController extends Controller {
          foreach ($files as $file) {
             $name = $file->getClientOriginalName();
             $file->store('/public/img/products/');
-            echo '/public/img/products/';
+            echo '/public/img/products/' . $name;
          }
       }
    }
