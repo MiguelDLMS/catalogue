@@ -71,7 +71,6 @@ class ProductsController extends Controller {
 
       if($request->hasFile('insertImages')) {
          foreach ($files as $file) {
-            $name = $file->getClientOriginalName();
             $file->store('images/', ['disk' => 'products']);
          }
 
