@@ -6,8 +6,9 @@
 
 @push('stylesheets')
     <link href="{{ asset('css/shop-product-edit.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/map.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-jvectormap-2.0.5.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css" type="text/css">
 @endpush
 
 @push('content')
@@ -139,8 +140,8 @@
 @push('javascripts')
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
-    
     <script type="text/javascript">
         $(document).ready(function () {
             var first = true;
