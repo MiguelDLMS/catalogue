@@ -222,7 +222,6 @@
 
             $("#country").on("input", function () {
                 paintMap();
-                alert("g");
             });
         });
     </script>
