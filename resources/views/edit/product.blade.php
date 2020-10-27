@@ -179,7 +179,7 @@
                 });
                 formData.append('deleteImages', $('#delete-images').attr("images"));
 
-                console.log(formData);
+                console.log(formData.values());
                 $.ajax({
                     url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
@@ -190,8 +190,6 @@
                         console.log(result);
                     },
                     error: function(data) {
-                        console.log(formData);
-                        console.log(this);
                         console.log(data);
                     }
                 });
