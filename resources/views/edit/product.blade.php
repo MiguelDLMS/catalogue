@@ -165,7 +165,28 @@
             $( "div[style='display: none;']" ).show(500);
         });
 
-        $("#country").on("input", function() {
+        $(document).ready(function() {
+            $("#save-images").click(function(e) {
+                e.preventDefault();
+
+                var _token = $("input[name='_token']").val();
+                var insertImages = $("#images").val();
+                var deleteImages = $("#delete-images").val();
+
+                $.ajax({
+                    url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
+                    type:'POST',
+                    data: { 
+                        _token: _token,
+                        insertImages: insertImages,
+                        deleteImages: deleteImages
+                    }
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function paintMap() {
             var code = $(this).val();
             var data = {
                 [code]: "#1A2F40"
@@ -192,33 +213,12 @@
                     el.html(el.html());
                 }
             });
+        }
 
-        });
-    </script>
-    <script type="text/javascript">
-        var code = $('#map').attr('country-code');
-        var data = {
-            [code]: "#1A2F40"
-        };
+        $("#country").on("input", paintMap());
 
-        var map = $('#map').vectorMap({
-            map: 'world_mill', // el mapa del mundo
-            backgroundColor: 'white',
-            regionStyle: {
-                initial: {
-                    fill: "#65BAFF"
-                }
-            },
-            series: {
-                regions: [{
-                    values: data, // los valores
-                    attribute: 'fill',
-                    normalizeFunction: 'polynomial' // la formula de normalizacion de datos
-                }]
-            },
-            onRegionTipShow: function(e, el, code){ // al seleccionar una region se muestra el valor que tengan en el array
-                el.html(el.html());
-            }
+        $(document).ready(function() {
+            paintMap();
         });
     </script>
 @endpush
