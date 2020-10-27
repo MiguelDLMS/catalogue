@@ -14,9 +14,9 @@
 @push('content')
     <!-- Modal -->
     <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div id="images-modal" class="modal-dialog" role="document">
             <div class="modal-content">
-                <form id="images-form" enctype="multipart/form-data">
+                <form id="images-form" action="{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input id="images" name="images[]" style="visibility:hidden !important; height: 0px !important; padding: 0px !important;" type="file" accept="image/*" multiple>
                     <input type="hidden" id="delete-images" name="delete-images" images="">
@@ -174,14 +174,16 @@
                     url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
                     data: new FormData(this),
-                    processData: false,
-                    contentType: false
-                })
-                .done(function(req, res) {
-                    console.log(JSON.stringify(req.body));
-                    console.log(JSON.stringify(req));
-                    console.log("hola");
+                    success: function(result) {
+                        location.reload();
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
                 });
+
+                $("#images-modal").hide();
+                e.preventDefault();
             });
         });
     </script>
