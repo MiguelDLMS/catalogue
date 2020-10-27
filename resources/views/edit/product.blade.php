@@ -194,7 +194,7 @@
                     }
                 });
 
-                $('#images-form').trigger("reset");
+                $('#images-form')[0].reset();
                 $('#modal').modal('hide');
             });
         });
