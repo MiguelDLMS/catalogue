@@ -11,9 +11,7 @@ class ImagesController extends Controller
         $path = storage_public('img/' . $filename);
 
         if (!File::exists($path)) {
-
             abort(404);
-
         }
 
         $file = File::get($path);
