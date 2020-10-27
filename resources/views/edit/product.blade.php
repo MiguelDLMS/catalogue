@@ -172,17 +172,23 @@
             $("#images-form").submit(function(e) {
                 e.preventDefault();
 
-                console.log(new FormData(this));
-                console.log(this);
+                var formData = new FormData();
+
+                $.each($("#images")[0].files, function(i, file) {
+                    formData.append('insertImages', file);
+                });
+                formData.append('deleteImages', $('#delete-images').attr("images"));
+
+                console.log(data);
                 $.ajax({
                     url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
-                    data: new FormData(this),
+                    data: formData,
                     success: function(result) {
                         console.log(result);
                     },
                     error: function(data) {
-                        console.log(new FormData(this));
+                        console.log(formData);
                         console.log(this);
                         console.log(data);
                     }
