@@ -176,6 +176,9 @@
                     data: new FormData(this),
                     processData: false,
                     contentType: false
+                })
+                .done(function(res) {
+                    console.log(res);
                 });
 
                 e.preventDefault();

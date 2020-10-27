@@ -74,7 +74,11 @@ class ProductsController extends Controller {
             $name = $file->getClientOriginalName();
             $file->store('/public/img/products/');
          }
+
+         return response("Images updated", 200)->header('Content-Type', 'text/plain');
       }
+
+      return response("Images not found", 512)->header('Content-Type', 'text/plain');
    }
    public function destroy($id) {
       echo 'destroy';
