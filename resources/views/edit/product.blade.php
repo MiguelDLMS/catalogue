@@ -217,9 +217,10 @@
             });
         }
 
+        $("#country").on("input", paintMap());
+
         $(document).ready(function() {
             paintMap($('#map').attr('country-code'));
-            $("#country").on("input", paintMap());
         });
     </script>
 @endpush
