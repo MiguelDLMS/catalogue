@@ -68,13 +68,11 @@ class ProductsController extends Controller {
    }
    public function update(Request $request, $id) {
       $files = $request->file('images');
-      echo '/public/img/products/' . $files[0];
 
       if($request->hasFile('images')) {
          foreach ($files as $file) {
             $name = $file->getClientOriginalName();
             $file->store('/public/img/products/');
-            echo '/public/img/products/' . $name;
          }
       }
    }
