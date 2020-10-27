@@ -67,9 +67,10 @@ class ProductsController extends Controller {
       echo 'edit';
    }
    public function update(Request $request, $id) {
-      echo 'update';
-      echo $id;
-      echo $request;
+      echo 'update' . '\n';
+      echo $id . '\n';
+      echo $request->input('images') . '\n';
+      echo $request . '\n';
    }
    public function destroy($id) {
       echo 'destroy';
