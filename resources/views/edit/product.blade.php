@@ -170,14 +170,18 @@
             });
 
             $("#images-form").submit(function(e) {
+                console.log(new FormData(this));
+                console.log(this);
                 $.ajax({
                     url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
                     data: new FormData(this),
                     success: function(result) {
-                        location.reload();
+                        console.log(result);
                     },
                     error: function(data) {
+                        console.log(new FormData(this));
+                        console.log(this);
                         console.log(data);
                     }
                 });
