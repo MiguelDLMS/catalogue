@@ -157,6 +157,9 @@
 
                     Object.keys(input.files).forEach(function(k){
                         console.log(k + ' - ' + input.files[k]);
+
+                        console.log(input.files[k]);
+                        console.log(input.files[k].name);
                     });
 
                     for (i = 0; i < filesAmount; i++) {
