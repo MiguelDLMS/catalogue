@@ -260,17 +260,17 @@
                     success: function(result) {
                         console.log("Success: " + result);
                                 
-                        $('#success-modal').parent().modal('show');
+                        $('#success-modal').modal('show');
                     },
                     error: function(data) {
                         console.log("Error: " + data);
 
-                        $('#error-modal').parent().modal('show');
+                        $('#error-modal').modal('show');
                     }
                 });
 
                 $('#images-form').trigger("reset");
-                $('#images-modal').parent().modal('hide');
+                $('#images-modal').modal('hide');
                 location.reload();
             });
 
@@ -295,12 +295,12 @@
                     success: function(result) {
                         console.log("Success: " + result);
                                 
-                        $('#success-modal').parent().modal('show');
+                        $('#success-modal').modal('show');
                     },
                     error: function(data) {
                         console.log("Error: " + data);
 
-                        $('#error-modal').parent().modal('hide');
+                        $('#error-modal').modal('hide');
                     }
                 });
             });
