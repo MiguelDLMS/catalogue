@@ -12,7 +12,7 @@
 @endpush
 
 @push('content')
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+    <div class="modal fade" tabindex="-3" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div id="error-modal" class="modal-dialog" role="document">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalLabe">Error</h5>
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+    <div class="modal fade" tabindex="-2" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div id="success-modal" class="modal-dialog" role="document">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalLabe">Acción realizada</h5>
