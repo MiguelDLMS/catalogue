@@ -166,7 +166,6 @@
                             console.log(input.files[i]);
                             console.log(input.files.i);
                             console.log(i);
-                            console.log(input.files.0);
                             console.log(input.files[0]);
                             console.log(input.files["0"]);
 
