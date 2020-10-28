@@ -82,7 +82,7 @@ class ProductsController extends Controller {
                'FK_Image' => $imageID
             ));
 
-            return response($imageID, 200)->header('Content-Type', 'text/plain');
+            return response($file->getClientOriginalName(), 200)->header('Content-Type', 'text/plain');
          }
 
          return response("Images updated", 200)->header('Content-Type', 'text/plain');

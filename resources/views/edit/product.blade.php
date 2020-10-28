@@ -249,10 +249,10 @@
                     contentType: false,
                     data: formData,
                     success: function(result) {
-                        console.log(result);
+                        console.log("Success: " + result);
                     },
                     error: function(data) {
-                        console.log(data);
+                        console.log("Error: " + data);
                     }
                 });
 
