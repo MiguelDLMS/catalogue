@@ -12,7 +12,7 @@
 @endpush
 
 @push('content')
-    <div id="error-modal" class="modal fade" tabindex="-3" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+    <div id="error-modal" class="modal fade" tabindex="-4" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div id="success-modal" class="modal fade" tabindex="-2" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+    <div id="success-modal" class="modal fade" tabindex="-3" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -41,6 +41,28 @@
 
                 <div class="modal-body">
                     Se ha actualizado exitosamente
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="delete-product-modal" class="modal fade" tabindex="-2" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabe">Eliminar producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    ¿Desea eliminar este producto permanentemente?
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" class="close" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                    <button id="delete-product" type="button" class="btn btn-danger">Eliminar producto</button>
                 </div>
             </div>
         </div>
@@ -140,9 +162,14 @@
             </div>
             
             <div class="card-footer">
-                <div class="custom-control custom-switch float-right">
-                    <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
-                    <input id="visible" name="visible" type="checkbox" class="custom-control-input" @if($product['Visible']) checked @endif>
+                <div class="col6">
+                    <button type="button" class="btn btn-danger float-left" data-toggle="modal" data-target="#delete-product-modal">Eliminar producto</button>
+                </div>
+                <div class="col-6">
+                    <div class="custom-control custom-switch float-right">
+                        <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
+                        <input id="visible" name="visible" type="checkbox" class="custom-control-input" @if($product['Visible']) checked @endif>
+                    </div>
                 </div>
             </div>
         </div>
