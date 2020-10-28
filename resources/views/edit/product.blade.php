@@ -153,6 +153,7 @@
             function imagesPreview(input, placeToInsertImagePreview) {
 
                 if (input.files) {
+                    console.log(input.files);
                     input.files.forEach(file => {
                         var reader = new FileReader();
 
