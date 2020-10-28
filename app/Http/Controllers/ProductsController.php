@@ -121,17 +121,21 @@ class ProductsController extends Controller {
    }
 
    public function update(Request $request, $id) {
-      $files = $request->file('insertImages');
+      try {
+         DB::table('PRODUCTS')
+            ->where('PRODUCTS.ID_Product', $id)
+            ->update(array(
+               'Name' => $request->input('name'),
+               'Description' => $request->input('description'),
+               'Technical_Specifications' => $request->input('specifications'),
+               'Country_Code' => $request->input('country'),
+               'Visible' => $request->input('visible'),
+            ));
 
-      if($request->hasFile('insertImages')) {
-         foreach ($files as $file) {
-            $file->store('images/', ['disk' => 'products']);
-         }
-
-         return response("Images updated", 200)->header('Content-Type', 'text/plain');
+         return response("Product updated", 200)->header('Content-Type', 'text/plain');
+      } catch (Exception $e) {
+         return response("Producto not updated: " . $e->getMessage(), 512)->header('Content-Type', 'text/plain');
       }
-
-      return response("Images not found", 512)->header('Content-Type', 'text/plain');
    }
    public function destroy($id) {
       echo 'destroy';

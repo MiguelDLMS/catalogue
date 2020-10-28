@@ -13,7 +13,7 @@
 
 @push('content')
     <!-- Modal -->
-    <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div id="images-modal" class="modal-dialog" role="document">
             <div class="modal-content">
                 <form id="images-form" action="{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}" method="post" enctype="multipart/form-data">
@@ -58,7 +58,7 @@
     </div>
     <!-- /Modal -->
 
-    <form method="POST" action="{{ route('request.quote') }}">
+    <form id="product-form" action="{!! route('update.product', [ 'id' => $product['ID_Product'] ]) !!}" method="post" enctype="multipart/form-data">
     @csrf
         <div class="card mt-4">
             <div id="carouselExampleIndicators" class="carousel slide  card-img-top img-fluid" data-ride="carousel">
@@ -94,6 +94,8 @@
                 </a>
             </div>
             <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Seleccionar imágenes</button>
+
+            <input id="visible" name="visible" type="checkbox" checked data-toggle="toggle">
 
             <div class="card-body">
                 <h3 class="card-title">
@@ -220,30 +222,32 @@
                     contentType: false,
                     data: formData,
                     success: function(result) {
-                        console.log(result);
+                        console.log("Success: " + result);
                     },
                     error: function(data) {
-                        console.log(data);
+                        console.log("Error: " + data);
                     }
                 });
 
                 $('#images-form').trigger("reset");
                 $('#images-modal').parent().modal('hide');
+                location.reload();
             });
 
-            $("#images-form").submit(function(e) {
+            $("#product-form").submit(function(e) {
                 e.preventDefault();
 
                 var formData = new FormData();
 
                 formData.append("_token", "{{ csrf_token() }}");
-                $.each($("#images")[0].files, function(i, file) {
-                    formData.append('insertImages[]', file);
-                });
-                formData.append('deleteImages', $('#delete-images').attr("images"));
+                formData.append('name', $('#name').val());
+                formData.append('description', $('#description').val());
+                formData.append('specifications', $('#specifications').val());
+                formData.append('country', $('#country').val());
+                formData.append('visible', $('#country').is( ':checked' ) ? 1: 0);
 
                 $.ajax({
-                    url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
+                    url: "{!! route('update.product', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
                     processData: false,
                     contentType: false,
@@ -256,8 +260,7 @@
                     }
                 });
 
-                $('#images-form').trigger("reset");
-                $('#images-modal').parent().modal('hide');
+                $('#product-form').trigger("reset");
             });
         });
     </script>
