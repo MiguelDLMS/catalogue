@@ -106,7 +106,7 @@
             
             <div class="card-footer">
                 <div class="custom-control custom-switch float-right">
-                    <input id="visible" name="visible" type="checkbox" class="custom-control-input" @if($product['visible']) checked @endif>
+                    <input id="visible" name="visible" type="checkbox" class="custom-control-input" @if($product['Visible']) checked @endif>
                     <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
                 </div>
             </div>
