@@ -159,22 +159,14 @@
                         reader.onload = function(event) {
                             var template = $('#iamge-preview').first();
 
-                            console.log(input.files);
-                            console.log(input.files[i.toString()]);
-                            console.log(input.files[i]);
-                            console.log(input.files.i);
-                            console.log(i);
-                            console.log(input.files[0]);
-                            console.log(input.files["0"]);
-
-                            template.find(".delete-image").attr("image", input.files[i.toString()].name);
+                            template.find(".delete-image").attr("image", input.files[k].name);
                             template.find(".product-image").attr("src", event.target.result);
-                            template.find(".product-image").attr("alt", input.files[i.toString()].name);
+                            template.find(".product-image").attr("alt", input.files[k].name);
                             
                             template.appendTo(placeToInsertImagePreview.html());
                         }
 
-                        reader.readAsDataURL(input.files[i.toString()]);
+                        reader.readAsDataURL(input.files[k]);
                     });
                 }
 
