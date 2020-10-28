@@ -164,7 +164,6 @@
                             $template.find(".product-image").attr("src", event.target.result);
                             
                             $template.appendTo(placeToInsertImagePreview);
-                            $(placeToInsertImagePreview).append($template);
                         }
 
                         reader.readAsDataURL(input.files[k]);
