@@ -123,9 +123,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('product/{id}/edit', function ($id) {
     $product = DB::table('PRODUCTS')
-        ->select('ID_Product', 'Name', 'Description', 'Technical_Specifications', 'Country_Code')
+        ->select('ID_Product', 'Name', 'Description', 'Technical_Specifications', 'Country_Code', 'Visible')
         ->where('ID_Product', $id)
-        ->where('Visible', 1)
         ->first();
 
     $product = json_decode(json_encode($product), true);
