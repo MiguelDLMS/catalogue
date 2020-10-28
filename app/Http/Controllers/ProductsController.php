@@ -71,18 +71,16 @@ class ProductsController extends Controller {
 
       if($request->hasFile('insertImages')) {
          foreach ($files as $file) {
-            $file->store('images/', ['disk' => 'products']);
+            $storagePath = $file->store('images/', ['disk' => 'products']);
 
             $imageID = DB::table('IMAGES')->insertGetId(array(
-               'Name' => $file->getClientOriginalName()
+               'Name' => basename($storagePath)
             ));
 
             DB::table('PRODUCTS_IMAGES')->insert(array(
                'FK_Product' => $id,
                'FK_Image' => $imageID
             ));
-
-            return response($file->getClientOriginalName(), 200)->header('Content-Type', 'text/plain');
          }
 
          return response("Images updated", 200)->header('Content-Type', 'text/plain');
