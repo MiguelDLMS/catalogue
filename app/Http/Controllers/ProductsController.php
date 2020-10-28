@@ -77,7 +77,7 @@ class ProductsController extends Controller {
             $upload = true;
 
             if ($request->has('deleteImages')) {
-               if (strpos($request->input('deleteImages'), $file->getClientOriginalName())) {
+               if (strpos($request->input('deleteImages'), $file->getClientOriginalName()) !== true) {
                   $upload = false;
                }
             }
