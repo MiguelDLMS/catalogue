@@ -309,6 +309,29 @@
                 location.reload();
             });
 
+            $("#delete-product").click(function(e) {
+                $.ajax({
+                    url: "{!! route('delete.product', [ 'id' => $product['ID_Product'] ]) !!}",
+                    type: 'POST',
+                    processData: false,
+                    contentType: false,
+                    success: function(result) {
+                        console.log("Success: " + result);
+                        
+                        $('#save-icon').show();
+                        $('#saving-spinner').hide();
+                        $(location).attr('href', 'http://catalogue.acorla.com/dashboard');
+                    },
+                    error: function(data) {
+                        console.log("Error: " + data);
+                        
+                        $('#save-icon').show();
+                        $('#saving-spinner').hide();
+                        $('#error-modal').modal('hide');
+                    }
+                });
+            });
+
             $("#product-form").submit(function(e) {
                 e.preventDefault();
                 $('#save-icon').hide();
@@ -338,7 +361,7 @@
                     },
                     error: function(data) {
                         console.log("Error: " + data);
-                        
+
                         $('#save-icon').show();
                         $('#saving-spinner').hide();
                         $('#error-modal').modal('hide');

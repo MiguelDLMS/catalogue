@@ -165,3 +165,8 @@ Route::post('product/{id}/update', [
     'uses' => 'App\Http\Controllers\ProductsController@update',
     'as' => 'update.product'
 ]);
+
+Route::post('product/{id}/delete', [
+    'uses' => 'App\Http\Controllers\ProductsController@delete',
+    'as' => 'delete.product'
+]);

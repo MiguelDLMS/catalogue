@@ -137,7 +137,36 @@ class ProductsController extends Controller {
          return response("Producto not updated: " . $e->getMessage(), 512)->header('Content-Type', 'text/plain');
       }
    }
-   public function destroy($id) {
-      echo 'destroy';
+   public function delete($id) {
+      $images = DB::table('IMAGES')
+         ->join('PRODUCTS_IMAGES', 'PRODUCTS_IMAGES.FK_Image', '=', 'IMAGES.ID_Image')
+         ->join('PRODUCTS', 'PRODUCTS.ID_Product', '=', 'PRODUCTS_IMAGES.FK_Product')
+         ->select('IMAGES.ID_Image', 'IMAGES.Name')
+         ->where('PRODUCTS.ID_Product', $id)
+         ->get();
+   
+      $images = json_decode($images, true);
+
+      foreach ($images as $image) {
+         DB::table('IMAGES')
+            ->where('IMAGES.ID_Image', $image["ID_Image"])
+            ->delete();
+
+            Storage::disk('products')->delete('images/' . $image["Name"]);
+      }
+
+      $deleted = DB::table('PRODUCTS')
+         ->where('PRODUCTS.ID_Product', $id)
+         ->delete();
+
+      if ($deleted) {
+         $res = response("Product deleted", 200)->header('Content-Type', 'text/plain');
+      }
+
+      if (!isset($res)) {
+         $res = response("Product not deleted", 512)->header('Content-Type', 'text/plain');
+      }
+
+      return $res;
    }
 }
