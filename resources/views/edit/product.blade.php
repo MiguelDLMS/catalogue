@@ -12,8 +12,8 @@
 @endpush
 
 @push('content')
-    <div class="modal fade" tabindex="-3" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
-        <div id="error-modal" class="modal-dialog" role="document">
+    <div id="error-modal" class="modal fade" tabindex="-3" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabe">Error</h5>
@@ -47,8 +47,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
-        <div id="images-modal" class="modal-dialog" role="document">
+    <div id="images-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form id="images-form" action="{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}" method="post" enctype="multipart/form-data">
                     @csrf
