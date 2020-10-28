@@ -164,6 +164,7 @@
                             template.find(".product-image").attr("src", event.target.result);
                             
                             template.appendTo(placeToInsertImagePreview);
+                            console.log(template);
                             $(placeToInsertImagePreview).append(template);
                         }
 
