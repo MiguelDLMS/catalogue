@@ -154,6 +154,7 @@
 
                 if (input.files) {
                     console.log(input.files["0"]);
+                    console.log(input.files["0"].name);
                     input.files.forEach(file => {
                         var reader = new FileReader();
 
