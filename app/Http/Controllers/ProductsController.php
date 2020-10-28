@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller {
 
@@ -88,13 +89,15 @@ class ProductsController extends Controller {
          $res = response("Images updated", 200)->header('Content-Type', 'text/plain');
       }
 
-      if (Request::exists('vdeleteImages')) {
+      if ($request-has('deleteImages')) {
          $imageNames = explode(';', $request->input('deleteImages'));
 
          foreach ($imageNames as $imageName) {
             DB::table('IMAGES')
                ->where('IMAGES.Name', $imageName)
                ->delete();
+
+               Storage::disk('products')->delete('images/' . $imageName);
          }
 
          $res = response("Images updated", 200)->header('Content-Type', 'text/plain');
