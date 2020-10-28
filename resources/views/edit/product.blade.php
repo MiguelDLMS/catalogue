@@ -162,7 +162,7 @@
                             $template.find(".product-image").attr("alt", input.files[k].name);
                             $template.find(".product-image").attr("src", event.target.result);
                             
-                            $template.before(placeToInsertImagePreview);
+                            $template.insertBefore(placeToInsertImagePreview + " div:last");
                         }
 
                         reader.readAsDataURL(input.files[k]);
@@ -172,7 +172,7 @@
             };
 
             $('#images').on('change', function() {
-                imagesPreview(this, '#add-image-btn');
+                imagesPreview(this, '#image-previews');
             });
 
             $(".delete-image").click(function() {
