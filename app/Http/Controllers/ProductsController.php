@@ -138,6 +138,10 @@ class ProductsController extends Controller {
       }
    }
    public function delete($id) {
+      DB::table('PRODUCTS_CATEGORIES')
+         ->where('PRODUCTS_CATEGORIES.FK_Product', $id)
+         ->delete();
+
       $images = DB::table('IMAGES')
          ->join('PRODUCTS_IMAGES', 'PRODUCTS_IMAGES.FK_Image', '=', 'IMAGES.ID_Image')
          ->join('PRODUCTS', 'PRODUCTS.ID_Product', '=', 'PRODUCTS_IMAGES.FK_Product')
