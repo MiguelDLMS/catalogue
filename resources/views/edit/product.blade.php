@@ -245,7 +245,7 @@
                 formData.append('description', $('#description').val());
                 formData.append('specifications', $('#specifications').val());
                 formData.append('country', $('#country').val());
-                formData.append('visible', $('#country').is( ':checked' ) ? 1: 0);
+                formData.append('visible', $('#visible').is( ':checked' ) ? 1: 0);
 
                 $.ajax({
                     url: "{!! route('update.product', [ 'id' => $product['ID_Product'] ]) !!}",
