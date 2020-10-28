@@ -175,7 +175,7 @@
                 imagesPreview(this, '#image-previews');
             });
 
-            $(".delete-image").click(function() {
+            $("#image-previews").on('click', 'div button.delete-image', function() {
                 if (first) {
                     $("#delete-images").attr("images", $(this).attr("image"));
                     first = false;
