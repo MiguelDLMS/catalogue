@@ -224,9 +224,19 @@
                     data: formData,
                     success: function(result) {
                         console.log("Success: " + result);
+                                
+                        BootstrapDialog.show({
+                            title: 'Actualización exitosa',
+                            message: 'Se ha actualizado exitosamente'
+                        });
                     },
                     error: function(data) {
                         console.log("Error: " + data);
+
+                        BootstrapDialog.show({
+                            title: 'Error',
+                            message: 'Ha ocurrido un error y no hemos podido realizar la acción deseada.'
+                        });
                     }
                 });
 
@@ -255,9 +265,19 @@
                     data: formData,
                     success: function(result) {
                         console.log("Success: " + result);
+                                
+                        BootstrapDialog.show({
+                            title: 'Actualización exitosa',
+                            message: 'Se ha actualizado exitosamente'
+                        });
                     },
                     error: function(data) {
                         console.log("Error: " + data);
+
+                        BootstrapDialog.show({
+                            title: 'Error',
+                            message: 'Ha ocurrido un error y no hemos podido realizar la acción deseada.'
+                        });
                     }
                 });
             });
