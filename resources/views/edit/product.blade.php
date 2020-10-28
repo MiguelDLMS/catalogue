@@ -12,6 +12,12 @@
 @endpush
 
 @push('content')
+    <div class="alert alert-success" role="alert">
+        <strong>Acción realizada:</strong> Se ha actualizado exitosamente
+    </div>
+    <div class="alert alert-danger" role="alert">
+        <strong>Error:</strong> No ha sido posible realizar la acción solicitada
+    </div>
     <!-- Modal -->
     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div id="images-modal" class="modal-dialog" role="document">
@@ -225,18 +231,12 @@
                     success: function(result) {
                         console.log("Success: " + result);
                                 
-                        BootstrapDialog.show({
-                            title: 'Actualización exitosa',
-                            message: 'Se ha actualizado exitosamente'
-                        });
+                        $('#success-alert').alert()
                     },
                     error: function(data) {
                         console.log("Error: " + data);
 
-                        BootstrapDialog.show({
-                            title: 'Error',
-                            message: 'Ha ocurrido un error y no hemos podido realizar la acción deseada.'
-                        });
+                        $('#error-alert').alert()
                     }
                 });
 
@@ -266,18 +266,12 @@
                     success: function(result) {
                         console.log("Success: " + result);
                                 
-                        BootstrapDialog.show({
-                            title: 'Actualización exitosa',
-                            message: 'Se ha actualizado exitosamente'
-                        });
+                        $('#success-alert').alert()
                     },
                     error: function(data) {
                         console.log("Error: " + data);
 
-                        BootstrapDialog.show({
-                            title: 'Error',
-                            message: 'Ha ocurrido un error y no hemos podido realizar la acción deseada.'
-                        });
+                        $('#error-alert').alert()
                     }
                 });
             });
