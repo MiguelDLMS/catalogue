@@ -148,7 +148,9 @@
 
     <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
     <script type="text/javascript">
-            $(function() {
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+
             var first = true;
 
             $("#images-button").click(function() {
