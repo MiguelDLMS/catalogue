@@ -153,25 +153,24 @@
             function imagesPreview(input, placeToInsertImagePreview) {
 
                 if (input.files) {
-                    var filesAmount = input.files.length;
-
-                    for (i = 0; i < filesAmount; i++) {
+                    files.forEach(file => {
                         var reader = new FileReader();
 
                         reader.onload = function(event) {
                             var template = $('#iamge-preview').first();
 
                             console.log(input.files);
+                            console.log(file);
 
-                            template.find(".delete-image").attr("image", input.files[i].name);
+                            template.find(".delete-image").attr("image", file.name);
                             template.find(".product-image").attr("src", event.target.result);
-                            template.find(".product-image").attr("alt", input.files[i].name);
+                            template.find(".product-image").attr("alt", file.name);
                             
                             template.appendTo(placeToInsertImagePreview.html());
                         }
 
-                        reader.readAsDataURL(input.files[i]);
-                    }
+                        reader.readAsDataURL(file);
+                    });
                 }
 
             };
