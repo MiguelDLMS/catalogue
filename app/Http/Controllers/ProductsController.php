@@ -71,7 +71,7 @@ class ProductsController extends Controller {
 
       if($request->hasFile('insertImages')) {
          foreach ($files as $file) {
-            //$file->store('images/', ['disk' => 'products']);
+            $file->store('images/', ['disk' => 'products']);
 
             $imageID = DB::table('IMAGES')->insertGetId(array(
                'Name' => $file->getClientOriginalName()
