@@ -133,6 +133,10 @@
             </div>
         </div>
         <!-- /.card -->
+
+        <a href="#" class="float">
+            <i class="fa fa-plus my-float"></i>
+        </a>
     </form>
 @endpush
 
