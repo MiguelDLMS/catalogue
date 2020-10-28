@@ -105,8 +105,8 @@
             </div>
             
             <div class="card-footer">
-                <div class="custom-control custom-switch">
-                    <input id="visible" name="visible" type="checkbox" class="custom-control-input float-right"">
+                <div class="custom-control custom-switch float-right">
+                    <input id="visible" name="visible" type="checkbox" class="custom-control-input">
                     <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
                 </div>
             </div>
