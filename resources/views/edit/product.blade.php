@@ -163,7 +163,7 @@
                             template.find(".product-image").attr("src", event.target.result);
                             template.find(".product-image").attr("alt", input.files[k].name);
                             
-                            template.appendTo(placeToInsertImagePreview.html());
+                            template.appendTo(placeToInsertImagePreview);
                         }
 
                         reader.readAsDataURL(input.files[k]);
