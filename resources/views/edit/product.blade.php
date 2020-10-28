@@ -127,9 +127,9 @@
             </div>
             
             <div class="card-body">
-                <strong>Código del país: </strong><input type="text" class="form-control" id="country" name="country" maxlength="2" value="MX">
+                <strong>Código del país: </strong><input type="text" class="form-control" id="country" name="country" maxlength="2" value="{{ $product['Country_Code'] }}">
 
-                <div id="map" class="map" country-code="MX"></div>
+                <div id="map" class="map" country-code="{{ $product['Country_Code'] }}"></div>
             </div>
         </div>
         <!-- /.card -->
@@ -200,6 +200,35 @@
 
             $("#cancel-images").click(function() {
                 $( "div[style='display: none;']" ).show(500);
+            });
+
+            $("#images-form").submit(function(e) {
+                e.preventDefault();
+
+                var formData = new FormData();
+
+                formData.append("_token", "{{ csrf_token() }}");
+                $.each($("#images")[0].files, function(i, file) {
+                    formData.append('insertImages[]', file);
+                });
+                formData.append('deleteImages', $('#delete-images').attr("images"));
+
+                $.ajax({
+                    url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
+                    type: 'POST',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    success: function(result) {
+                        console.log(result);
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+
+                $('#images-form').trigger("reset");
+                $('#images-modal').parent().modal('hide');
             });
 
             $("#images-form").submit(function(e) {

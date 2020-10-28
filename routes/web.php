@@ -42,7 +42,7 @@ Route::get('/', function () {
 
 Route::get('product/{id}', function ($id) {
     $product = DB::table('PRODUCTS')
-        ->select('ID_Product', 'Name', 'Description', 'Technical_Specifications', 'Latitude', 'Longitude')
+        ->select('ID_Product', 'Name', 'Description', 'Technical_Specifications', 'Country_Code')
         ->where('ID_Product', $id)
         ->where('Visible', 1)
         ->first();
@@ -123,7 +123,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('product/{id}/edit', function ($id) {
     $product = DB::table('PRODUCTS')
-        ->select('ID_Product', 'Name', 'Description', 'Technical_Specifications', 'Latitude', 'Longitude')
+        ->select('ID_Product', 'Name', 'Description', 'Technical_Specifications', 'Country_Code')
         ->where('ID_Product', $id)
         ->where('Visible', 1)
         ->first();
@@ -178,6 +178,11 @@ Route::post('/request-quote', [
 ]);
 
 Route::post('product/{id}/update-images', [
-    'uses' => 'App\Http\Controllers\ProductsController@update',
+    'uses' => 'App\Http\Controllers\ProductsController@updateImages',
     'as' => 'update.product.images'
+]);
+
+Route::post('product/{id}/update', [
+    'uses' => 'App\Http\Controllers\ProductsController@update',
+    'as' => 'update.product'
 ]);

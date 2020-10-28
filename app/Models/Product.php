@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $Name
  * @property string $Description
  * @property string $Technical_Specifications
- * @property float $Latitude
- * @property float $Longitude
+ * @property string $Country_Code
  * @property boolean $Visible
+ * @property CATEGORY[] $cATEGORIEs
+ * @property IMAGE[] $iMAGEs
  */
 class Product extends Model
 {
@@ -39,6 +40,21 @@ class Product extends Model
     /**
      * @var array
      */
-    protected $fillable = ['Name', 'Description', 'Technical_Specifications', 'Latitude', 'Longitude', 'Visible'];
+    protected $fillable = ['Name', 'Description', 'Technical_Specifications', 'Country_Code', 'Visible'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function cATEGORIEs()
+    {
+        return $this->belongsToMany('App\CATEGORY', 'PRODUCTS_CATEGORIES', 'FK_Product', 'FK_Category');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function iMAGEs()
+    {
+        return $this->belongsToMany('App\IMAGE', 'PRODUCTS_IMAGES', 'FK_Product', 'FK_Image');
+    }
 }

@@ -16,7 +16,7 @@ class ProductsController extends Controller {
           'search' => 'required'
       ]);
 
-      $my_query = "SELECT 
+      $query = "SELECT 
               ID_Product, 
               Name, 
               Description, 
@@ -30,7 +30,7 @@ class ProductsController extends Controller {
               Name_Relevance DESC, 
               Description_Relevance DESC";
 
-      $products = DB::select($my_query, array($request['search'], $request['search'], $request['search'], $request['search']));
+      $products = DB::select($query, array($request['search'], $request['search'], $request['search'], $request['search']));
 
       $products = json_decode(json_encode($products), true);
 
@@ -65,6 +65,24 @@ class ProductsController extends Controller {
    }
    public function edit($id) {
       echo 'edit';
+   }
+   public function updateImages(Request $request, $id) {
+      $files = $request->file('insertImages');
+
+      if($request->hasFile('insertImages')) {
+         foreach ($files as $file) {
+            $file->store('images/', ['disk' => 'products']);
+
+         //    DB::table('IMAGES')->insert([
+         //       ['email' => 'taylor@example.com', 'votes' => 0],
+         //       ['email' => 'dayle@example.com', 'votes' => 0],
+         //   ]);
+         }
+
+         return response("Images updated", 200)->header('Content-Type', 'text/plain');
+      }
+
+      return response("Images not found", 512)->header('Content-Type', 'text/plain');
    }
    public function update(Request $request, $id) {
       $files = $request->file('insertImages');

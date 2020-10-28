@@ -115,7 +115,7 @@
         </div>
         
         <div class="card-body">
-            <div id="map" class="map" country-code="MX"></div>
+            <div id="map" class="map" country-code="{{ $product['Country_Code'] }}"></div>
         </div>
     </div>
     <!-- /.card -->
