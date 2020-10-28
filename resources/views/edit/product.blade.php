@@ -162,13 +162,15 @@
             </div>
             
             <div class="card-footer">
-                <div class="col6">
-                    <button type="button" class="btn btn-danger float-left" data-toggle="modal" data-target="#delete-product-modal">Eliminar producto</button>
-                </div>
-                <div class="col-6">
-                    <div class="custom-control custom-switch float-right">
-                        <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
-                        <input id="visible" name="visible" type="checkbox" class="custom-control-input" @if($product['Visible']) checked @endif>
+                <div class="row">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-danger float-left" data-toggle="modal" data-target="#delete-product-modal">Eliminar producto</button>
+                    </div>
+                    <div class="col-6">
+                        <div class="custom-control custom-switch float-right">
+                            <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
+                            <input id="visible" name="visible" type="checkbox" class="custom-control-input" @if($product['Visible']) checked @endif>
+                        </div>
                     </div>
                 </div>
             </div>
