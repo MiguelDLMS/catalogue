@@ -20,7 +20,9 @@ body {
 
 .add-image {
     width: 100% !important;
-    height: 100% !important;
+    min-height: 20vh !important;
+    height: 20vh !important;
+    max-height: 20vh !important;
 }
 
 .carousel-item .product-image {
