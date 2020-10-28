@@ -95,8 +95,6 @@
             </div>
             <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Seleccionar imágenes</button>
 
-            <input id="visible" name="visible" type="checkbox" checked data-toggle="toggle">
-
             <div class="card-body">
                 <h3 class="card-title">
                     <input type="text" class="form-control" id="name" name="name" value="{{ $product['Name'] }}">
@@ -107,7 +105,10 @@
             </div>
             
             <div class="card-footer">
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request" disabled>Cotizar</button>
+                <div class="custom-control custom-switch">
+                    <input id="visible" name="visible" type="checkbox" class="custom-control-input">
+                    <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
+                </div>
             </div>
         </div>
         <!-- /.card -->
