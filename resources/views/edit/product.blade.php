@@ -155,6 +155,10 @@
                 if (input.files) {
                     var filesAmount = input.files.length;
 
+                    Object.keys(input.files).forEach(function(k){
+                        console.log(k + ' - ' + obj[k]);
+                    });
+
                     for (i = 0; i < filesAmount; i++) {
                         var reader = new FileReader();
 
