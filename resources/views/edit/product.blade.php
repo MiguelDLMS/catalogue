@@ -62,7 +62,15 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" class="close" data-dismiss="modal" aria-label="Close">Cancelar</button>
-                    <button id="delete-product" type="button" class="btn btn-danger">Eliminar producto</button>
+                    <button id="delete-product" type="button" class="btn btn-danger">
+                        <div id="delete-spinner" style="display: none;">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span class="sr-only">Deleting...</span>
+                        </div>
+                        <div id="delete-text">
+                            Eliminar producto
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -310,6 +318,9 @@
             });
 
             $("#delete-product").click(function(e) {
+                $('#delete-text').hide();
+                $('#delete-spinner').show();
+
                 var formData = new FormData();
 
                 formData.append("_token", "{{ csrf_token() }}");
@@ -323,17 +334,17 @@
                     success: function(result) {
                         console.log("Success: " + result);
                         
-                        $('#save-icon').show();
-                        $('#saving-spinner').hide();
+                        $('#delete-text').show();
+                        $('#delete-spinner').hide();
                         $(location).attr('href', 'http://catalogue.acorla.com/dashboard');
                     },
                     error: function(data) {
                         console.log("Error: ");
                         console.log(data);
                         
-                        $('#save-icon').show();
-                        $('#saving-spinner').hide();
-                        $('#error-modal').modal('hide');
+                        $('#delete-text').show();
+                        $('#delete-spinner').hide();
+                        $('#error-modal').modal('show');
                     }
                 });
             });
@@ -370,7 +381,7 @@
 
                         $('#save-icon').show();
                         $('#saving-spinner').hide();
-                        $('#error-modal').modal('hide');
+                        $('#error-modal').modal('show');
                     }
                 });
             });
