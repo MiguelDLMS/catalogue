@@ -77,10 +77,11 @@ class ProductsController extends Controller {
             $upload = true;
 
             if ($request->has('deleteImages')) {
-               $res = response($file->getClientOriginalName(), 200)->header('Content-Type', 'text/plain');
+               return response($file->getClientOriginalName(), 200)->header('Content-Type', 'text/plain');
 
                if (strpos($request->has('deleteImages'), $file->getClientOriginalName())) {
                   $upload = false;
+                  return response("2" . $file->getClientOriginalName(), 200)->header('Content-Type', 'text/plain');
                }
             }
 
