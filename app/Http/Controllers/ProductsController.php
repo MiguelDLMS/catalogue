@@ -66,8 +66,9 @@ class ProductsController extends Controller {
    public function edit($id) {
       echo 'edit';
    }
-   
+
    public function updateImages(Request $request, $id) {
+      $res = NULL;
       $files = $request->file('insertImages');
 
       if($request->hasFile('insertImages')) {
@@ -84,10 +85,26 @@ class ProductsController extends Controller {
             ));
          }
 
-         return response("Images updated", 200)->header('Content-Type', 'text/plain');
+         $res = response("Images updated", 200)->header('Content-Type', 'text/plain');
       }
 
-      return response("Images not found", 512)->header('Content-Type', 'text/plain');
+      if (Request::exists('vdeleteImages')) {
+         $imageNames = explode(';', $request->input('deleteImages'));
+
+         foreach ($imageNames as $imageName) {
+            DB::table('IMAGES')
+               ->where('IMAGES.Name', $imageName)
+               ->delete();
+         }
+
+         $res = response("Images updated", 200)->header('Content-Type', 'text/plain');
+      }
+
+      if (!isset($res)) {
+         $res = response("Images not found", 512)->header('Content-Type', 'text/plain');
+      }
+
+      return $res;
    }
 
    public function update(Request $request, $id) {
