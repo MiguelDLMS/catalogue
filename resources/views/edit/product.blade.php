@@ -160,10 +160,11 @@
                             var template = $('#iamge-preview').first();
 
                             template.find(".delete-image").attr("image", input.files[k].name);
-                            template.find(".product-image").attr("src", event.target.result);
                             template.find(".product-image").attr("alt", input.files[k].name);
+                            template.find(".product-image").attr("src", event.target.result);
                             
-                            template.append(placeToInsertImagePreview);
+                            template.appendTo(placeToInsertImagePreview);
+                            $(placeToInsertImagePreview).append(template);
                         }
 
                         reader.readAsDataURL(input.files[k]);
