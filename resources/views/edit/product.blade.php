@@ -260,8 +260,6 @@
                         console.log("Error: " + data);
                     }
                 });
-
-                $('#product-form').trigger("reset");
             });
         });
     </script>
