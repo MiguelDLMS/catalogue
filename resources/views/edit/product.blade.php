@@ -12,12 +12,36 @@
 @endpush
 
 @push('content')
-    <div class="alert alert-success" role="alert">
-        <strong>Acción realizada:</strong> Se ha actualizado exitosamente
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div id="error-modal" class="modal-dialog" role="document">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabe">Error</h5>
+                <button id="cancel-images" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                No ha sido posible realizar la acción solicitada
+            </div>
+        </div>
     </div>
-    <div class="alert alert-danger" role="alert">
-        <strong>Error:</strong> No ha sido posible realizar la acción solicitada
+
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div id="success-modal" class="modal-dialog" role="document">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabe">Acción realizada</h5>
+                <button id="cancel-images" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                Se ha actualizado exitosamente
+            </div>
+        </div>
     </div>
+
     <!-- Modal -->
     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div id="images-modal" class="modal-dialog" role="document">
@@ -231,12 +255,12 @@
                     success: function(result) {
                         console.log("Success: " + result);
                                 
-                        $('#success-alert').alert()
+                        $('#success-modal').parent().modal('show');
                     },
                     error: function(data) {
                         console.log("Error: " + data);
 
-                        $('#error-alert').alert()
+                        $('#error-modal').parent().modal('show');
                     }
                 });
 
@@ -266,12 +290,12 @@
                     success: function(result) {
                         console.log("Success: " + result);
                                 
-                        $('#success-alert').alert()
+                        $('#success-modal').parent().modal('show');
                     },
                     error: function(data) {
                         console.log("Error: " + data);
 
-                        $('#error-alert').alert()
+                        $('#error-modal').parent().modal('hide');
                     }
                 });
             });
