@@ -74,16 +74,26 @@ class ProductsController extends Controller {
 
       if($request->hasFile('insertImages')) {
          foreach ($files as $file) {
-            $storagePath = $file->store('images/', ['disk' => 'products']);
+            $upload = true;
 
-            $imageID = DB::table('IMAGES')->insertGetId(array(
-               'Name' => basename($storagePath)
-            ));
+            if ($request->has('deleteImages')) {
+               if (strpos($request->has('deleteImages'), $file->getClientOriginalName())) {
+                  $upload = false;
+               }
+            }
 
-            DB::table('PRODUCTS_IMAGES')->insert(array(
-               'FK_Product' => $id,
-               'FK_Image' => $imageID
-            ));
+            if ($upload) {
+               $storagePath = $file->store('images/', ['disk' => 'products']);
+
+               $imageID = DB::table('IMAGES')->insertGetId(array(
+                  'Name' => basename($storagePath)
+               ));
+   
+               DB::table('PRODUCTS_IMAGES')->insert(array(
+                  'FK_Product' => $id,
+                  'FK_Image' => $imageID
+               ));
+            }
          }
 
          $res = response("Images updated", 200)->header('Content-Type', 'text/plain');
