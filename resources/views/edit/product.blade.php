@@ -163,10 +163,10 @@
             
             <div class="card-footer">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6 col-12 my-auto">
                         <button type="button" class="btn btn-danger float-left" data-toggle="modal" data-target="#delete-product-modal">Eliminar producto</button>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6 col-12">
                         <div class="custom-control custom-switch float-right">
                             <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
                             <input id="visible" name="visible" type="checkbox" class="custom-control-input" @if($product['Visible']) checked @endif>
