@@ -153,16 +153,7 @@
             function imagesPreview(input, placeToInsertImagePreview) {
 
                 if (input.files) {
-                    var filesAmount = input.files.length;
-
                     Object.keys(input.files).forEach(function(k){
-                        console.log(k + ' - ' + input.files[k]);
-
-                        console.log(input.files[k]);
-                        console.log(input.files[k].name);
-                    });
-
-                    for (i = 0; i < filesAmount; i++) {
                         var reader = new FileReader();
 
                         reader.onload = function(event) {
@@ -184,7 +175,7 @@
                         }
 
                         reader.readAsDataURL(input.files[i.toString()]);
-                    }
+                    });
                 }
 
             };
