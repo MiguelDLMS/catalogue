@@ -14,7 +14,7 @@
 @push('content')
     <div class="modal fade" tabindex="-3" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div id="error-modal" class="modal-dialog" role="document">
-        <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabe">Error</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -31,7 +31,7 @@
 
     <div class="modal fade" tabindex="-2" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div id="success-modal" class="modal-dialog" role="document">
-        <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabe">Acción realizada</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -127,6 +127,7 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+
             <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#images-modal">Seleccionar imágenes</button>
 
             <div class="card-body">
@@ -189,6 +190,7 @@
             $('[data-toggle="tooltip"]').tooltip()
 
             var first = true;
+            $('#images-modal').parent().modal('show');
 
             $("#images-button").click(function() {
                 $("#images").click();
