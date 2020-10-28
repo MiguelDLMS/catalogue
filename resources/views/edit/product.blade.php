@@ -310,11 +310,16 @@
             });
 
             $("#delete-product").click(function(e) {
+                var formData = new FormData();
+
+                formData.append("_token", "{{ csrf_token() }}");
+
                 $.ajax({
                     url: "{!! route('delete.product', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
                     processData: false,
                     contentType: false,
+                    data: formData,
                     success: function(result) {
                         console.log("Success: " + result);
                         
