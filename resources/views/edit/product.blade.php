@@ -159,13 +159,13 @@
                         var reader = new FileReader();
 
                         reader.onload = function(event) {
-                            var template = $('#iamge-preview').first().html();
+                            var template = $('#iamge-preview').first();
 
                             template.find(".delete-image").attr("image", input.files[i].name);
                             template.find(".product-image").attr("src", event.target.result);
                             template.find(".product-image").attr("alt", input.files[i].name);
                             
-                            template.appendTo(placeToInsertImagePreview);
+                            template.appendTo(placeToInsertImagePreview.html());
                         }
 
                         reader.readAsDataURL(input.files[i]);
