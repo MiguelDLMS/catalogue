@@ -168,8 +168,8 @@
                     </div>
                     <div class="col-md-6 col-12 my-auto">
                         <div class="custom-control custom-switch float-right">
-                            <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
                             <input id="visible" name="visible" type="checkbox" class="custom-control-input" @if($product['Visible']) checked @endif>
+                            <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
                         </div>
                     </div>
                 </div>
