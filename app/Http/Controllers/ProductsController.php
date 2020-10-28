@@ -137,7 +137,7 @@ class ProductsController extends Controller {
          return response("Producto not updated: " . $e->getMessage(), 512)->header('Content-Type', 'text/plain');
       }
    }
-   public function delete($id) {
+   public function delete(Request $request, $id) {
       $images = DB::table('IMAGES')
          ->join('PRODUCTS_IMAGES', 'PRODUCTS_IMAGES.FK_Image', '=', 'IMAGES.ID_Image')
          ->join('PRODUCTS', 'PRODUCTS.ID_Product', '=', 'PRODUCTS_IMAGES.FK_Product')
