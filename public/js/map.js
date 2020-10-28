@@ -32,7 +32,7 @@ function paintMap(code = '') {
     });
 }
 
-$(document).ready(function() {
+$(function() {
     paintMap($('#map').attr("country-code"));
 
     $("#country").on("input", function () {

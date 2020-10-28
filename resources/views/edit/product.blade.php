@@ -28,9 +28,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
+                        <div id="image-previews" class="row">
                             @foreach ($product['Images'] as $image)
-                                <div class="col-lg-4 col-sm-6 col-12">
+                                <div class="col-lg-4 col-sm-6 col-12 image-preview">
                                     <button type="button" class="btn btn-danger delete-image" image="{{ $image['Name'] }}">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
@@ -143,11 +143,39 @@
 
     <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
+            $(function() {
             var first = true;
 
             $("#images-button").click(function() {
                 $("#images").click();
+            });
+
+            function imagesPreview(input, placeToInsertImagePreview) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(event) {
+                            var template = $('#iamge-preview').first().html();
+
+                            template.find(".delete-image").attr("image", input.files[i].name);
+                            template.find(".product-image").attr("src", event.target.result);
+                            template.find(".product-image").attr("alt", input.files[i].name);
+                            
+                            template.appendTo(placeToInsertImagePreview);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+            };
+
+            $('#images').on('change', function() {
+                imagesPreview(this, '#image-previews');
             });
 
             $(".delete-image").click(function() {
