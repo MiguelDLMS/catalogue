@@ -29,8 +29,8 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-2" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
-        <div id="success-modal" class="modal-dialog" role="document">
+    <div id="success-modal" class="modal fade" tabindex="-2" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabe">Acción realizada</h5>
@@ -190,7 +190,6 @@
             $('[data-toggle="tooltip"]').tooltip()
 
             var first = true;
-            $('#images-modal').parent().modal('show');
 
             $("#images-button").click(function() {
                 $("#images").click();
