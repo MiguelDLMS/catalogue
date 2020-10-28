@@ -89,7 +89,7 @@ class ProductsController extends Controller {
          $res = response("Images updated", 200)->header('Content-Type', 'text/plain');
       }
 
-      if ($request-has('deleteImages')) {
+      if ($request->has('deleteImages')) {
          $imageNames = explode(';', $request->input('deleteImages'));
 
          foreach ($imageNames as $imageName) {
