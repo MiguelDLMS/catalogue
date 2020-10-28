@@ -323,7 +323,8 @@
                         $(location).attr('href', 'http://catalogue.acorla.com/dashboard');
                     },
                     error: function(data) {
-                        console.log("Error: " + data);
+                        console.log("Error: ");
+                        console.log(data);
                         
                         $('#save-icon').show();
                         $('#saving-spinner').hide();
