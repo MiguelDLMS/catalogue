@@ -133,34 +133,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('product/{id}/edit', functi
     $images = DB::table('IMAGES')
         ->join('PRODUCTS_IMAGES', 'PRODUCTS_IMAGES.FK_Image', '=', 'IMAGES.ID_Image')
         ->join('PRODUCTS', 'PRODUCTS.ID_Product', '=', 'PRODUCTS_IMAGES.FK_Product')
-        ->select('IMAGES.Name')
+        ->select('IMAGES.ID_Image', 'IMAGES.Name')
         ->where('PRODUCTS.ID_Product', $id)
         ->get();
     
     $product['Images'] = json_decode($images, true);
 
-    $suggestedProducts = DB::table('PRODUCTS')
-        ->select('ID_Product', 'Name', 'Description')
-        ->where('Visible', 1)
-        ->limit(3)
-        ->get();
-
-    $suggestedProducts = json_decode($suggestedProducts, true);
-
-    for ($i=0; $i < count($suggestedProducts); $i++) { 
-        $images = DB::table('IMAGES')
-            ->join('PRODUCTS_IMAGES', 'PRODUCTS_IMAGES.FK_Image', '=', 'IMAGES.ID_Image')
-            ->join('PRODUCTS', 'PRODUCTS.ID_Product', '=', 'PRODUCTS_IMAGES.FK_Product')
-            ->select('IMAGES.Name')
-            ->where('PRODUCTS.ID_Product', $suggestedProducts[$i]['ID_Product'])
-            ->get();
-
-        $suggestedProducts[$i]['Images'] = json_decode($images, true);
-    }
-
     return view('edit.product', [ 
-        'product' => $product,
-        'suggestedProducts' => $suggestedProducts
+        'product' => $product
      ]);
 });
 
