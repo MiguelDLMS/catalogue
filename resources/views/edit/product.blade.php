@@ -157,16 +157,16 @@
                         var reader = new FileReader();
 
                         reader.onload = function(event) {
-                            var template = $('#iamge-preview').first().clone();
+                            var $template = $('#iamge-preview').first().clone();
 
-                            template.find(".delete-image").attr("image", input.files[k].name);
-                            template.find(".product-image").attr("alt", input.files[k].name);
-                            template.find(".product-image").attr("src", event.target.result);
+                            $template.find(".delete-image").attr("image", input.files[k].name);
+                            $template.find(".product-image").attr("alt", input.files[k].name);
+                            $template.find(".product-image").attr("src", event.target.result);
                             
-                            template.appendTo(placeToInsertImagePreview);
-                            console.log(template);
-                            console.log($('#iamge-preview').first());
-                            $(placeToInsertImagePreview).append(template);
+                            $template.appendTo(placeToInsertImagePreview);
+                            console.log($template.html());
+                            console.log($('#image-previews').html());
+                            $(placeToInsertImagePreview).append($template);
                         }
 
                         reader.readAsDataURL(input.files[k]);
