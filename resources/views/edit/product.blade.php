@@ -163,7 +163,8 @@
 
                             console.log(input.files);
                             console.log(input.files[i.toString()]);
-                            console.log(input.files[i.toString()].name);
+                            console.log(input.files[i]);
+                            console.log(input.files.i);
 
                             template.find(".delete-image").attr("image", input.files[i.toString()].name);
                             template.find(".product-image").attr("src", event.target.result);
