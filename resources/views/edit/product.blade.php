@@ -156,7 +156,7 @@
                     var filesAmount = input.files.length;
 
                     Object.keys(input.files).forEach(function(k){
-                        console.log(k + ' - ' + obj[k]);
+                        console.log(k + ' - ' + input.files[k]);
                     });
 
                     for (i = 0; i < filesAmount; i++) {
