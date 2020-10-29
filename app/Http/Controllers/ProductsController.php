@@ -111,6 +111,8 @@ class ProductsController extends Controller {
       $res = NULL;
       $files = $request->file('insertImages');
 
+      return response($request->input('insertImages'), 512)->header('Content-Type', 'text/plain');
+
       if($request->hasFile('insertImages')) {
          foreach ($files as $file) {
             $upload = true;
