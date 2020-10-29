@@ -334,9 +334,7 @@
                     success: function(result) {
                         console.log("Success: " + result);
                         
-                        $('#delete-text').show();
-                        $('#delete-spinner').hide();
-                        $(location).attr('href', 'http://catalogue.acorla.com/dashboard');
+                        $(location).attr('href', 'http://catalogue.acorla.com');
                     },
                     error: function(data) {
                         console.log("Error: ");
