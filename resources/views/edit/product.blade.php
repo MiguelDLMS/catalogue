@@ -304,6 +304,8 @@
                 });
                 formData.append('deleteImages', $('#delete-images').attr("images"));
 
+                console.log($("#images")[0].files);
+
                 $.ajax({
                     url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
