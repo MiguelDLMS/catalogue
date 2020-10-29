@@ -113,12 +113,10 @@ class ProductsController extends Controller {
 
       if($request->hasFile('insertImages')) {
          foreach ($files as $file) {
-            return response($file->getClientOriginalName(), 200)->header('Content-Type', 'text/plain');
-
             $upload = true;
 
             if ($request->has('deleteImages')) {
-               if (strpos($request->input('deleteImages'), $file->getClientOriginalName()) !== true) {
+               if (strpos($request->input('deleteImages'), $file->getClientOriginalName()) === true) {
                   $upload = false;
                }
             }
