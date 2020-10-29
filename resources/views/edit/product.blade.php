@@ -121,7 +121,7 @@
                             </div>
                             <div id="save-images-text">
                                 Guardar
-                        </div>
+                            </div>
                         </button>
                     </div>
                 </form>
