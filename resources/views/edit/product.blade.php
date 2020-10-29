@@ -317,7 +317,7 @@
                         $('#save-images-spinner').hide();
                         $('#images-modal').modal('hide');
                         $('#success-modal').modal('show');
-                        location.reload();
+                        //location.reload();
                     },
                     error: function(data) {
                         console.log("Error: " + data);
@@ -326,7 +326,7 @@
                         $('#save-images-spinner').hide();
                         $('#images-modal').modal('hide');
                         $('#error-modal').modal('show');
-                        location.reload();
+                        //location.reload();
                     }
                 });
             });
