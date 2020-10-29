@@ -151,9 +151,9 @@ Route::post('/search', [
     'as' => 'search.product'
 ]);
 
-Route::post('/request-quote', [
+Route::post('product/{id}/request-quote', [
     'uses' => 'App\Http\Controllers\ProductsController@request',
-    'as' => 'request.quote'
+    'as' => 'request.product.quote'
 ]);
 
 Route::post('product/{id}/update-images', [
