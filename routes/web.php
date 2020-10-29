@@ -147,12 +147,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('product/{id}/edit', functi
 // Forms
 
 Route::post('/search', [
-    'uses' => 'App\Http\Controllers\ProductsController@Search',
+    'uses' => 'App\Http\Controllers\ProductsController@search',
     'as' => 'search.product'
 ]);
 
 Route::post('/request-quote', [
-    'uses' => 'App\Http\Controllers\QuoteRequestFormController@Request',
+    'uses' => 'App\Http\Controllers\ProductsController@request',
     'as' => 'request.quote'
 ]);
 

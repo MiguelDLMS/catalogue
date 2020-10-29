@@ -10,7 +10,32 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller {
 
-   public function Search(Request $request) {
+   /**
+    * Returns a product.
+    */
+    public function getProduct($productID) {
+      $product = DB::table('PRODUCTS')
+         ->select('ID_Product', 'Name', 'Description', 'Technical_Specifications', 'Country_Code', 'Visible')
+         ->where('ID_Product', $id)
+         ->first();
+
+      return $product;
+    }
+
+    public function request(Request $request) {
+
+      // Form validation
+      $this->validate($request, [
+          'name' => 'required',
+          'last-name' => 'required',
+          'email' => 'required',
+          'message' => 'required',
+          'product-name' => 'required',
+          'product-url' => 'required'
+      ]);
+  }
+
+   public function search(Request $request) {
 
       // Form validation
       $this->validate($request, [
@@ -51,6 +76,20 @@ class ProductsController extends Controller {
           'products' => $products
       ]);
   }
+
+   /**
+    * Returns all images of a product.
+    */
+    public function getProductImages($productID) {
+      $images = DB::table('IMAGES')
+         ->join('PRODUCTS_IMAGES', 'PRODUCTS_IMAGES.FK_Image', '=', 'IMAGES.ID_Image')
+         ->join('PRODUCTS', 'PRODUCTS.ID_Product', '=', 'PRODUCTS_IMAGES.FK_Product')
+         ->select('IMAGES.ID_Image', 'IMAGES.Name')
+         ->where('PRODUCTS.ID_Product', $productID)
+         ->get();
+
+      return $images;
+    }
 
    public function index() {
       echo 'index';
