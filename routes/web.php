@@ -138,13 +138,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('product/{id}/edit', functi
     
     $product['Images'] = json_decode($images, true);
 
-    return view('admin.edit_product', [ 
+    return view('admin.product.edit', [ 
         'product' => $product
      ]);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('product/new', function () {
-    return view('admin.new_product');
+    return view('admin.product.new');
 });
 
 // --------------------------------------------------------------------------
