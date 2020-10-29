@@ -320,7 +320,8 @@
                         //location.reload();
                     },
                     error: function(data) {
-                        console.log("Error: " + data);
+                        console.log("Error: ");
+                        console.log(data);
 
                         $('#save-images-text').show();
                         $('#save-images-spinner').hide();
