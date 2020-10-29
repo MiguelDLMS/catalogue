@@ -50,7 +50,7 @@
     <div id="images-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form id="images-form" action="{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}" method="post" enctype="multipart/form-data">
+                <form id="images-form" method="post" enctype="multipart/form-data">
                     @csrf
                     <input id="images" name="images[]" style="visibility:hidden !important; height: 0px !important; padding: 0px !important;" type="file" accept="image/*" multiple>
                     <input type="hidden" id="delete-images" name="delete-images" images="">
@@ -89,7 +89,7 @@
     </div>
     <!-- /Modal -->
 
-    <form id="product-form" action="{!! route('update.product', [ 'id' => $product['ID_Product'] ]) !!}" method="post" enctype="multipart/form-data">
+    <form id="product-form" method="post" enctype="multipart/form-data">
     @csrf
         <div class="card mt-4">
             <div id="carouselExampleIndicators" class="carousel slide  card-img-top img-fluid" data-ride="carousel">
@@ -111,10 +111,10 @@
 
             <div class="card-body">
                 <h3 class="card-title">
-                    <input type="text" class="form-control" id="name" name="name" value="{{ $product['Name'] }}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del producto">
                 </h3>
                 <p class="card-text">
-                    <input type="text" class="form-control" id="description" name="description" value="{{ $product['Description'] }}">
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Descripción del producto">
                 </p>
             </div>
             
@@ -122,7 +122,7 @@
                 <div class="row">
                     <div class="col-md-6 col-12 my-auto">
                         <div class="custom-control custom-switch float-right">
-                            <input id="visible" name="visible" type="checkbox" class="custom-control-input" @if($product['Visible']) checked @endif>
+                            <input id="visible" name="visible" type="checkbox" class="custom-control-input">
                             <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
                         </div>
                     </div>
@@ -243,7 +243,6 @@
                 formData.append('deleteImages', $('#delete-images').attr("images"));
 
                 $.ajax({
-                    url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
                     processData: false,
                     contentType: false,
@@ -279,7 +278,6 @@
                 formData.append("_token", "{{ csrf_token() }}");
 
                 $.ajax({
-                    url: "{!! route('delete.product', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
                     processData: false,
                     contentType: false,
@@ -315,7 +313,6 @@
                 formData.append('visible', $('#visible').is( ':checked' ) ? 1: 0);
 
                 $.ajax({
-                    url: "{!! route('update.product', [ 'id' => $product['ID_Product'] ]) !!}",
                     type: 'POST',
                     processData: false,
                     contentType: false,
