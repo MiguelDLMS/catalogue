@@ -115,7 +115,7 @@
                     </div>
                     <div class="modal-footer">
                         <button id="save-images" type="submit" class="btn btn-primary">
-                            <div id="save-images-spinner" style="display: none;">
+                            <div id="save-images-spinner" style="width: 1em; height: 1em;display: none;">
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                 <span class="sr-only">Saving...</span>
                             </div>
@@ -303,6 +303,8 @@
                     formData.append('insertImages[]', file);
                 });
                 formData.append('deleteImages', $('#delete-images').attr("images"));
+
+                console.log(formData);
 
                 $.ajax({
                     url: "{!! route('update.product.images', [ 'id' => $product['ID_Product'] ]) !!}",

@@ -138,19 +138,19 @@ class ProductsController extends Controller {
          $res = response("Images updated", 200)->header('Content-Type', 'text/plain');
       }
 
-      // if ($request->has('deleteImages')) {
-      //    $imageNames = explode(';', $request->input('deleteImages'));
+      if ($request->has('deleteImages')) {
+         $imageNames = explode(';', $request->input('deleteImages'));
 
-      //    foreach ($imageNames as $imageName) {
-      //       DB::table('IMAGES')
-      //          ->where('IMAGES.Name', $imageName)
-      //          ->delete();
+         foreach ($imageNames as $imageName) {
+            DB::table('IMAGES')
+               ->where('IMAGES.Name', $imageName)
+               ->delete();
 
-      //          Storage::disk('products')->delete('images/' . $imageName);
-      //    }
+               Storage::disk('products')->delete('images/' . $imageName);
+         }
 
-      //    $res = response("Images updated", 200)->header('Content-Type', 'text/plain');
-      // }
+         $res = response("Images updated", 200)->header('Content-Type', 'text/plain');
+      }
 
       if (!isset($res)) {
          $res = response("Images not found", 512)->header('Content-Type', 'text/plain');
