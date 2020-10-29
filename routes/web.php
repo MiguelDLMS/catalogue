@@ -160,6 +160,11 @@ Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/request-quot
     'as' => 'request.product.quote'
 ])->where('id', '[0-9]+');
 
+Route::middleware(['auth:sanctum', 'verified'])->post('product/insert', [
+    'uses' => 'App\Http\Controllers\ProductsController@insert',
+    'as' => 'insert.product'
+]);
+
 Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/update-images', [
     'uses' => 'App\Http\Controllers\ProductsController@updateImages',
     'as' => 'update.product.images'

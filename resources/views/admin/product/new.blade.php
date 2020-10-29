@@ -92,21 +92,6 @@
     <form id="product-form" method="post" enctype="multipart/form-data">
     @csrf
         <div class="card mt-4">
-            <div id="carouselExampleIndicators" class="carousel slide  card-img-top img-fluid" data-ride="carousel">
-                <ol class="carousel-indicators">
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-
             <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#images-modal">Seleccionar imágenes</button>
 
             <div class="card-body">
@@ -120,7 +105,7 @@
             
             <div class="card-footer">
                 <div class="row">
-                    <div class="col-md-6 col-12 my-auto">
+                    <div class="col-12 my-auto">
                         <div class="custom-control custom-switch float-right">
                             <input id="visible" name="visible" type="checkbox" class="custom-control-input">
                             <label class="custom-control-label" for="visible">Mostrar este producto al público</label>
@@ -231,71 +216,7 @@
 
             $("#images-form").submit(function(e) {
                 e.preventDefault();
-                $('#save-images-text').hide();
-                $('#save-images-spinner').show();
-
-                var formData = new FormData();
-
-                formData.append("_token", "{{ csrf_token() }}");
-                $.each($("#images")[0].files, function(i, file) {
-                    formData.append('insertImages[]', file);
-                });
-                formData.append('deleteImages', $('#delete-images').attr("images"));
-
-                $.ajax({
-                    type: 'POST',
-                    processData: false,
-                    contentType: false,
-                    data: formData,
-                    success: function(result) {
-                        console.log("Success: " + result);
-                        
-                        $('#save-images-text').show();
-                        $('#save-images-spinner').hide();
-                        $('#images-modal').modal('hide');
-                        $('#success-modal').modal('show');
-                        location.reload();
-                    },
-                    error: function(data) {
-                        console.log("Error: ");
-                        console.log(data);
-
-                        $('#save-images-text').show();
-                        $('#save-images-spinner').hide();
-                        $('#images-modal').modal('hide');
-                        $('#error-modal').modal('show');
-                        location.reload();
-                    }
-                });
-            });
-
-            $("#delete-product").click(function(e) {
-                $('#delete-text').hide();
-                $('#delete-spinner').show();
-
-                var formData = new FormData();
-
-                formData.append("_token", "{{ csrf_token() }}");
-
-                $.ajax({
-                    type: 'POST',
-                    processData: false,
-                    contentType: false,
-                    data: formData,
-                    success: function(result) {
-                        console.log("Success: " + result);
-                        
-                        $(location).attr('href', 'http://catalogue.acorla.com');
-                    },
-                    error: function(data) {
-                        console.log("Error: ");
-                        console.log(data);
-                        
-                        $('#delete-text').show();
-                        $('#delete-spinner').hide();
-                        $('#error-modal').modal('show');
-                    }
-                });
+                $('#images-modal').modal('hide');
             });
 
             $("#product-form").submit(function(e) {
@@ -312,7 +233,13 @@
                 formData.append('country', $('#country').val());
                 formData.append('visible', $('#visible').is( ':checked' ) ? 1: 0);
 
+                $.each($("#images")[0].files, function(i, file) {
+                    formData.append('insertImages[]', file);
+                });
+                formData.append('deleteImages', $('#delete-images').attr("images"));
+
                 $.ajax({
+                    url: "{!! route('insert.product') !!}",
                     type: 'POST',
                     processData: false,
                     contentType: false,

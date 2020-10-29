@@ -107,6 +107,27 @@ class ProductsController extends Controller {
       echo 'edit';
    }
 
+   public function insert(Request $request) {
+
+      $productID = DB::table('PRODUCTS')->insertGetId(array(
+         'Name' => $request->input('name'),
+         'Description' => $request->input('description'),
+         'Technical_Specifications' => $request->input('specifications'),
+         'Country_Code' => $request->input('country'),
+         'Visible' => $request->input('visible')
+      ));
+
+      if ($productID >= 0 && isset($productID)) {
+         $this->updateImages($request, $productID);
+      } else {
+         $res = response("Couldn`t insert the product to the database", 500)->header('Content-Type', 'text/plain');
+      }
+
+      $res = response($productID, 200)->header('Content-Type', 'text/plain');
+
+      return $res;
+   }
+
    public function updateImages(Request $request, $id) {
       $res = NULL;
       $files = $request->file('insertImages');
