@@ -138,9 +138,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('product/{id}/edit', functi
     
     $product['Images'] = json_decode($images, true);
 
-    return view('edit.product', [ 
+    return view('admin.edit-product', [ 
         'product' => $product
      ]);
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('product/new', function () {
+    return view('admin.new-product');
 });
 
 // --------------------------------------------------------------------------
@@ -151,22 +155,22 @@ Route::post('/search', [
     'as' => 'search.product'
 ]);
 
-Route::post('product/{id}/request-quote', [
+Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/request-quote', [
     'uses' => 'App\Http\Controllers\ProductsController@request',
     'as' => 'request.product.quote'
 ]);
 
-Route::post('product/{id}/update-images', [
+Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/update-images', [
     'uses' => 'App\Http\Controllers\ProductsController@updateImages',
     'as' => 'update.product.images'
 ]);
 
-Route::post('product/{id}/update', [
+Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/update', [
     'uses' => 'App\Http\Controllers\ProductsController@update',
     'as' => 'update.product'
 ]);
 
-Route::post('product/{id}/delete', [
+Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/delete', [
     'uses' => 'App\Http\Controllers\ProductsController@delete',
     'as' => 'delete.product'
 ]);
