@@ -293,6 +293,8 @@
 
             $("#images-form").submit(function(e) {
                 e.preventDefault();
+                $('#save-images-text').hide();
+                $('#save-images-spinner').show();
 
                 var formData = new FormData();
 
@@ -310,9 +312,10 @@
                     data: formData,
                     success: function(result) {
                         console.log("Success: " + result);
-                                
+                        
                         $('#save-images-text').show();
                         $('#save-images-spinner').hide();
+                        $('#images-modal').modal('hide');
                         $('#success-modal').modal('show');
                         location.reload();
                     },
@@ -321,6 +324,7 @@
 
                         $('#save-images-text').show();
                         $('#save-images-spinner').hide();
+                        $('#images-modal').modal('hide');
                         $('#error-modal').modal('show');
                         location.reload();
                     }
