@@ -81,7 +81,7 @@ Route::get('product/{id}', function ($id) {
         'product' => $product,
         'suggestedProducts' => $suggestedProducts
      ]);
-});
+})->where('id', '[0-9]+');
 
 Route::get('category/{name}', function ($name) {
     $category = DB::table('CATEGORIES')
@@ -141,7 +141,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('product/{id}/edit', functi
     return view('admin.product.edit', [ 
         'product' => $product
      ]);
-});
+})->where('id', '[0-9]+');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('product/new', function () {
     return view('admin.product.new');
@@ -158,19 +158,19 @@ Route::post('/search', [
 Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/request-quote', [
     'uses' => 'App\Http\Controllers\ProductsController@request',
     'as' => 'request.product.quote'
-]);
+])->where('id', '[0-9]+');
 
 Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/update-images', [
     'uses' => 'App\Http\Controllers\ProductsController@updateImages',
     'as' => 'update.product.images'
-]);
+])->where('id', '[0-9]+');
 
 Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/update', [
     'uses' => 'App\Http\Controllers\ProductsController@update',
     'as' => 'update.product'
-]);
+])->where('id', '[0-9]+');
 
 Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/delete', [
     'uses' => 'App\Http\Controllers\ProductsController@delete',
     'as' => 'delete.product'
-]);
+])->where('id', '[0-9]+');
