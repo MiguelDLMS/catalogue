@@ -114,7 +114,15 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="save-images" type="submit" class="btn btn-primary">Guardar</button>
+                        <button id="save-images" type="submit" class="btn btn-primary">
+                            <div id="save-images-spinner" style="display: none;">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span class="sr-only">Saving...</span>
+                            </div>
+                            <div id="save-images-text">
+                                Guardar
+                        </div>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -303,18 +311,20 @@
                     success: function(result) {
                         console.log("Success: " + result);
                                 
+                        $('#save-images-text').show();
+                        $('#save-images-spinner').hide();
                         $('#success-modal').modal('show');
+                        location.reload();
                     },
                     error: function(data) {
                         console.log("Error: " + data);
 
+                        $('#save-images-text').show();
+                        $('#save-images-spinner').hide();
                         $('#error-modal').modal('show');
+                        location.reload();
                     }
                 });
-
-                $('#images-form').trigger("reset");
-                $('#images-modal').modal('hide');
-                location.reload();
             });
 
             $("#delete-product").click(function(e) {
