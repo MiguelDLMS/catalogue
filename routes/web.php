@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/{page?}', function ($page = 1) {
     $products = DB::table('PRODUCTS')
-        ->where('Visible', 1)
         ->paginate(15, ['ID_Product', 'Name', 'Description'], 'page', $page)
+        ->where('Visible', 1)
         ->get();
 
     $products = json_decode($products, true);
