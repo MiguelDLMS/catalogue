@@ -5,10 +5,10 @@
 @endpush
 
 @push('stylesheets')
-    <link href="{!! asset('css/shop-product.css') !!}" rel="stylesheet">
-    <link href="{!! asset('css/map.css') !!}" rel="stylesheet">
+    <link href="{{ asset('css/shop-product.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/map.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{!! asset('css/jquery-jvectormap-2.0.5.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-jvectormap-2.0.5.css') }}">
 @endpush
 
 @push('content')
@@ -17,9 +17,9 @@
             <ol class="carousel-indicators">
                 @for ( $i = 0; $i < count($product['Images']); $i++ )
                     @if ($i == 0)
-                        <li data-target="#carouselExampleIndicators" data-slide-to="{!! $i !!}" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $i }}" class="active"></li>
                     @else
-                        <li data-target="#carouselExampleIndicators" data-slide-to="{!! $i !!}"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $i }}"></li>
                     @endif
                 @endfor
             </ol>
@@ -27,11 +27,11 @@
                 @foreach ($product['Images'] as $image)
                     @if ($loop->first)
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid product-image" src="{!! asset('products/images/'. $image['Name']) !!}" alt="{!! $image['Name'] !!}">
+                            <img class="d-block img-fluid product-image" src="{{ asset('products/images/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
                         </div>
                     @else
                         <div class="carousel-item">
-                            <img class="d-block img-fluid product-image" src="{!! asset('products/images/'. $image['Name']) !!}" alt="{!! $image['Name'] !!}">
+                            <img class="d-block img-fluid product-image" src="{{ asset('products/images/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
                         </div>
                     @endif
                 @endforeach
@@ -46,8 +46,8 @@
             </a>
         </div>
         <div class="card-body">
-            <h3 class="card-title">{!! $product['Name'] !!}</h3>
-            <p class="card-text">{!! $product['Description'] !!}</p>
+            <h3 class="card-title">{{ $product['Name'] }}</h3>
+            <p class="card-text">{{ $product['Description'] }}</p>
         </div>
         <div class="card-footer">
             <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Cotizar</button>
@@ -83,8 +83,8 @@
                                 <textarea class="form-control" id="message"></textarea>
                             </div>
 
-                            <input type="hidden" id="product-name" name="product-name" value="{!! $product['Name'] !!}">
-                            <input type="hidden" id="product-url" name="product-url" value="http://catalogue.acorla.com/product/{!! $product['ID_Product'] !!}">
+                            <input type="hidden" id="product-name" name="product-name" value="{{ $product['Name'] }}">
+                            <input type="hidden" id="product-url" name="product-url" value="http://catalogue.acorla.com/product/{{ $product['ID_Product'] }}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -105,12 +105,12 @@
         
         <div class="card-body">
             @forelse ( $product['Categories'] as $category )
-                <a href="{!! url('category/'.$category->Name) !!}">{!! $category->Name !!}</a>
+                <a href="{{ url('category/'.$category->Name) }}">{{ $category->Name }}</a>
             @empty
                 <div class="col">
                     <div class="col">
                         <div class="row my-2">
-                            <img class="col-2 img-fluid mx-auto" src="{!! asset('images/magnifying-glass-1976105_640.png') !!}" alt="">
+                            <img class="col-2 img-fluid mx-auto" src="{{ asset('images/magnifying-glass-1976105_640.png') }}" alt="">
                             <h2 class="text-center">No hemos encontrado productos similares.</h2>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
         </div>
         
         <div class="card-body">
-            {!! $product['Technical_Specifications'] !!}
+            {{ $product['Technical_Specifications'] }}
         </div>
     </div>
     <!-- /.card -->
@@ -137,7 +137,7 @@
         </div>
         
         <div class="card-body">
-            <div id="map" class="map" country-code="{!! $product['Country_Code'] !!}"></div>
+            <div id="map" class="map" country-code="{{ $product['Country_Code'] }}"></div>
         </div>
     </div>
     <!-- /.card -->
@@ -155,7 +155,7 @@
             <div class="col">
                 <div class="col">
                     <div class="row my-2">
-                        <img class="col-2 img-fluid mx-auto" src="{!! asset('images/magnifying-glass-1976105_640.png') !!}" alt="">
+                        <img class="col-2 img-fluid mx-auto" src="{{ asset('images/magnifying-glass-1976105_640.png') }}" alt="">
                         <h2 class="text-center">No hemos encontrado productos similares.</h2>
                     </div>
                 </div>
@@ -166,10 +166,10 @@
 @endpush
 
 @push('javascripts')
-    <script type="text/javascript" src="{!! asset('js/jquery-jvectormap-2.0.5.min.js') !!}"></script>
-    <script type="text/javascript" src="{!! asset('js/jquery-jvectormap-world-mill.js') !!}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
 
-    <script type="text/javascript" src="{!! asset('js/map.js') !!}"></script>
+    <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
     <script type="text/javascript">
         $('#quotation-request').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget); // Button that triggered the modal

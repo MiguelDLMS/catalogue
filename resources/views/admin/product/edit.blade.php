@@ -5,10 +5,10 @@
 @endpush
 
 @push('stylesheets')
-    <link href="{!! asset('css/shop-product-edit.css') !!}" rel="stylesheet">
-    <link href="{!! asset('css/map.css') !!}" rel="stylesheet">
+    <link href="{{ asset('css/shop-product-edit.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/map.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{!! asset('css/jquery-jvectormap-2.0.5.css') !!}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-jvectormap-2.0.5.css') }}">
 @endpush
 
 @push('content')
@@ -95,12 +95,12 @@
                         <div id="image-previews" class="row">
                             @foreach ($product['Images'] as $image)
                                 <div class="col-lg-4 col-sm-6 col-12 mb-3 image-preview">
-                                    <button type="button" class="btn btn-danger delete-image" image="{!! $image['Name'] !!}">
+                                    <button type="button" class="btn btn-danger delete-image" image="{{ $image['Name'] }}">
                                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
                                         </svg>
                                     </button>
-                                    <img class="d-block img-fluid product-image" src="{!! asset('products/images/'. $image['Name']) !!}" alt="{!! $image['Name'] !!}">
+                                    <img class="d-block img-fluid product-image" src="{{ asset('products/images/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
                                 </div>
                             @endforeach
 
@@ -137,9 +137,9 @@
                 <ol class="carousel-indicators">
                     @for ( $i = 0; $i < count($product['Images']); $i++ )
                         @if ($i == 0)
-                            <li data-target="#carouselExampleIndicators" data-slide-to="{!! $i !!}" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $i }}" class="active"></li>
                         @else
-                            <li data-target="#carouselExampleIndicators" data-slide-to="{!! $i !!}"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $i }}"></li>
                         @endif
                     @endfor
                 </ol>
@@ -147,11 +147,11 @@
                     @foreach ($product['Images'] as $image)
                         @if ($loop->first)
                             <div class="carousel-item active">
-                                <img class="d-block img-fluid product-image" src="{!! asset('products/images/'. $image['Name']) !!}" alt="{!! $image['Name'] !!}">
+                                <img class="d-block img-fluid product-image" src="{{ asset('products/images/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
                             </div>
                         @else
                             <div class="carousel-item">
-                                <img class="d-block img-fluid product-image" src="{!! asset('products/images/'. $image['Name']) !!}" alt="{!! $image['Name'] !!}">
+                                <img class="d-block img-fluid product-image" src="{{ asset('products/images/'. $image['Name']) }}" alt="{{ $image['Name'] }}">
                             </div>
                         @endif
                     @endforeach
@@ -170,10 +170,10 @@
 
             <div class="card-body">
                 <h3 class="card-title">
-                    <input type="text" class="form-control" id="name" name="name" value="{!! $product['Name'] !!}">
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $product['Name'] }}">
                 </h3>
                 <p class="card-text">
-                    <input type="text" class="form-control" id="description" name="description" value="{!! $product['Description'] !!}">
+                    <input type="text" class="form-control" id="description" name="description" value="{{ $product['Description'] }}">
                 </p>
             </div>
             
@@ -199,7 +199,7 @@
             </div>
             
             <div class="card-body">
-                <input type="text" class="form-control" id="specifications" name="specifications" value="{!! $product['Technical_Specifications'] !!}">
+                <input type="text" class="form-control" id="specifications" name="specifications" value="{{ $product['Technical_Specifications'] }}">
             </div>
         </div>
         <!-- /.card -->
@@ -210,9 +210,9 @@
             </div>
             
             <div class="card-body">
-                <strong>Código del país: </strong><input type="text" class="form-control" id="country" name="country" maxlength="2" value="{!! $product['Country_Code'] !!}">
+                <strong>Código del país: </strong><input type="text" class="form-control" id="country" name="country" maxlength="2" value="{{ $product['Country_Code'] }}">
 
-                <div id="map" class="map" country-code="{!! $product['Country_Code'] !!}"></div>
+                <div id="map" class="map" country-code="{{ $product['Country_Code'] }}"></div>
             </div>
         </div>
         <!-- /.card -->
@@ -232,10 +232,10 @@
 @endpush
 
 @push('javascripts')
-    <script type="text/javascript" src="{!! asset('js/jquery-jvectormap-2.0.5.min.js') !!}"></script>
-    <script type="text/javascript" src="{!! asset('js/jquery-jvectormap-world-mill.js') !!}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
 
-    <script type="text/javascript" src="{!! asset('js/map.js') !!}"></script>
+    <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
     <script type="text/javascript">
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
@@ -298,7 +298,7 @@
 
                 var formData = new FormData();
 
-                formData.append("_token", "{!! csrf_token() !!}");
+                formData.append("_token", "{{ csrf_token() }}");
                 $.each($("#images")[0].files, function(i, file) {
                     formData.append('insertImages[]', file);
                 });
@@ -338,7 +338,7 @@
 
                 var formData = new FormData();
 
-                formData.append("_token", "{!! csrf_token() !!}");
+                formData.append("_token", "{{ csrf_token() }}");
 
                 $.ajax({
                     url: "{!! route('delete.product', [ 'id' => $product['ID_Product'] ]) !!}",
@@ -369,7 +369,7 @@
 
                 var formData = new FormData();
 
-                formData.append("_token", "{!! csrf_token() !!}");
+                formData.append("_token", "{{ csrf_token() }}");
                 formData.append('name', $('#name').val());
                 formData.append('description', $('#description').val());
                 formData.append('specifications', $('#specifications').val());
