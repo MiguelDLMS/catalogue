@@ -11,9 +11,6 @@
 @push('content')
     <div class="row my-4">
         @forelse ( $products as $product )
-        <script type="text/javascript">
-            {{ $product }}
-        </script>
             <x-ProductCard :productID="$product['ID_Product']" :productName="$product['Name']" :productDescription="$product['Description']" :imageName="$product['Images'][0]['Name']" />
         @empty
             <div class="col">
