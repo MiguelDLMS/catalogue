@@ -21,9 +21,7 @@ use App\Models\Product;
 Route::get('/{page?}', function ($page = 1) {
     $products = Product::paginate(15, ['ID_Product', 'Name', 'Description'], 'page', $page);
 
-    $products = json_decode($products, true);
-
-    for ($i=0; $i < count($products['data']); $i++) { 
+    for ($i=0; $i < count($products->data); $i++) { 
         $images = DB::table('IMAGES')
             ->join('PRODUCTS_IMAGES', 'PRODUCTS_IMAGES.FK_Image', '=', 'IMAGES.ID_Image')
             ->join('PRODUCTS', 'PRODUCTS.ID_Product', '=', 'PRODUCTS_IMAGES.FK_Product')
