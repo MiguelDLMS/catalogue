@@ -19,7 +19,7 @@ use App\Models\Product;
 // Public
 
 Route::get('/{page?}', function ($page = 1) {
-    $products = Product::paginate(15, ['ID_Product', 'Name', 'Description'], 'page', $page);
+    $products = Product::paginate(2, ['ID_Product', 'Name', 'Description'], 'page', $page);
 
     for ($i=0; $i < count($products); $i++) { 
         $images = DB::table('IMAGES')
