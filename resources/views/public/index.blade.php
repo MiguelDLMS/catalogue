@@ -25,7 +25,7 @@
     </div>
     <!-- /.row -->
 
-    <row class="row my-4 justify-content-center">
+    <row class="row justify-content-center">
         {{ $products->onEachSide(5)->links() }}
     </row>
     <!-- /.row -->
