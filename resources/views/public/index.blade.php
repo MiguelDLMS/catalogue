@@ -24,4 +24,9 @@
         @endforelse
     </div>
     <!-- /.row -->
+
+    <row class="row my-4 justify-content-center">
+        {{ $products->links() }}
+    </row>
+    <!-- /.row -->
 @endpush

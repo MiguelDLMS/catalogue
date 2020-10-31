@@ -106,7 +106,7 @@
             
             <div class="card-body">
                 @foreach ( $product['Categories'] as $category )
-                    <a href="{{ url('category/'.$category['Name']) }}">{{ $category['Name'] }}</a>
+                    <a href="{{ url('category/'.$category['Name']) }}"><u>{{ $category['Name'] }}</u></a>
                 @endforeach
             </div>
         </div>
@@ -137,7 +137,7 @@
 
     <div class="row my-4">
         <div class="col">
-            <h3>Productos sugeridos</h3>
+            <h3>Otros productos</h3>
         </div>
     </div>
 
