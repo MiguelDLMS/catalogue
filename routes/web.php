@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use \App\Product as ProductModel;
+use App\Models\Product as ProductModel;
 
 /*
 |--------------------------------------------------------------------------
