@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/{page?}', function ($page = 1) {
     $products = DB::table('PRODUCTS')
-.        ->where('Visible', 1)
+        ->where('Visible', 1)
         ->paginate(15, ['ID_Product', 'Name', 'Description'], 'page', $page)
         ->get();
 
