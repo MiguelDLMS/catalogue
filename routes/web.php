@@ -16,15 +16,11 @@ use Illuminate\Support\Facades\Route;
 // --------------------------------------------------------------------------
 // Public
 
-Route::get('/{page?}', function ($page = null) {
-    if (!$page) {
-        $page = 1;
-    }
-
+Route::get('/{page?}', function ($page = 1) {
     $products = DB::table('PRODUCTS')
         ->select('ID_Product', 'Name', 'Description')
         ->where('Visible', 1)
-        ->paginate(15, ['*'], 'page', $page)
+        ->paginate(15, 'page', $page)
         ->get();
 
     $products = json_decode($products, true);

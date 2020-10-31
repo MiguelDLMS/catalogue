@@ -26,7 +26,7 @@
     <!-- /.row -->
 
     <row class="row my-4 justify-content-center">
-        {{ $products->links() }}
+        {{ $products->onEachSide(5)->links() }}
     </row>
     <!-- /.row -->
 @endpush
