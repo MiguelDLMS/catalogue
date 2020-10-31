@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Product;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // Public
 
 Route::get('/{page?}', function ($page = 1) {
-    $products = App\Product::paginate(15, ['ID_Product', 'Name', 'Description'], 'page', $page);
+    $products = Product::paginate(15, ['ID_Product', 'Name', 'Description'], 'page', $page);
 
     $products = json_decode($products, true);
 
