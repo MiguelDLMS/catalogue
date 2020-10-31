@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use Product as ProductModel;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ use Product as ProductModel;
 // Public
 
 Route::get('/{page?}', function ($page = 1) {
-    $products = ProductModel::paginate(15, ['ID_Product', 'Name', 'Description'], 'page', $page);
+    $products = Product::paginate(15, ['ID_Product', 'Name', 'Description'], 'page', $page);
 
     $products = json_decode($products, true);
 
