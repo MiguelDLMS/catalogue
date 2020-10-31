@@ -58,9 +58,19 @@ Route::get('product/{id}', function ($id) {
     
     $product['Images'] = json_decode($images, true);
 
+    $categories = DB::table('CATEGORIES')
+        ->join('PRODUCTS_CATEGORIES', 'PRODUCTS_CATEGORIES.FK_Category', '=', 'CATEGORIES.ID_Category')
+        ->join('PRODUCTS', 'PRODUCTS.ID_Product', '=', 'PRODUCTS_CATEGORIES.FK_Product')
+        ->select('CATEGORIES.ID_Category', 'CATEGORIES.Name')
+        ->where('PRODUCTS.ID_Product', $id)
+        ->get();
+
+    $product['Categories'] = json_decode($categories, true);
+
     $suggestedProducts = DB::table('PRODUCTS')
         ->select('ID_Product', 'Name', 'Description')
         ->where('Visible', 1)
+        ->orderByRaw('RAND()')
         ->limit(3)
         ->get();
 
