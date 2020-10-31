@@ -98,27 +98,20 @@
     </div>
     <!-- /.card -->
 
-    <div class="card card-outline-secondary my-4">
-        <div class="card-header">
-            Categorías relacionadas
+    @if ( count($product['Categories']) )
+        <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+                Categorías relacionadas
+            </div>
+            
+            <div class="card-body">
+                @foreach ( $product['Categories'] as $category )
+                    <a href="{{ url('category/'.$category->Name) }}">{{ $category->Name }}</a>
+                @endforeach
+            </div>
         </div>
-        
-        <div class="card-body">
-            @forelse ( $product['Categories'] as $category )
-                <a href="{{ url('category/'.$category->Name) }}">{{ $category->Name }}</a>
-            @empty
-                <div class="col">
-                    <div class="col">
-                        <div class="row my-2">
-                            <img class="col-2 img-fluid mx-auto" src="{{ asset('images/magnifying-glass-1976105_640.png') }}" alt="">
-                            <h2 class="text-center">No hemos encontrado productos similares.</h2>
-                        </div>
-                    </div>
-                </div>
-            @endforelse
-        </div>
-    </div>
-    <!-- /.card -->
+        <!-- /.card -->
+    @endif
 
     <div class="card card-outline-secondary my-4">
         <div class="card-header">
