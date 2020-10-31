@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // --------------------------------------------------------------------------
 // Public
 
-Route::get('/{page?}', function ($page) {
+Route::get('/{page?}', function ($page = null) {
     if (!$page) {
         $page = 1;
     }
