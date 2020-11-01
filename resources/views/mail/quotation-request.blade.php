@@ -1,18 +1,18 @@
 @component('mail::message')
 
-    # Solicitud de cotización
+# Solicitud de cotización
 
-    **{{ $requesterName }} {{ $requesterLastName }}** con e-mail **{{ $requesterMail }}**,ha solicitado una cotización sobre el producto **{{ $productName }}**.
+**{{ $requesterName }} {{ $requesterLastName }}** con e-mail **{{ $requesterMail }}**,ha solicitado una cotización sobre el producto **{{ $productName }}**.
 
-    # Especificaciones de la solicitud
+# Especificaciones de la solicitud
 
-    {{ $requestSpecifications }}
+{{ $requestSpecifications }}
 
-    @component('mail::button', ['url' => "{{ url('/product/'.$productID) }}"])
-        Ver  producto
-    @endcomponent
+@component('mail::button', ['url' => "{{ url('/product/'.$productID) }}"])
+    Ver  producto
+@endcomponent
 
-    Excelente día,
-    {{ config('app.name') }}
+Excelente día,
+{{ config('app.name') }}
 
 @endcomponent
