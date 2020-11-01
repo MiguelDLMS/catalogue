@@ -218,7 +218,7 @@
                 $('#quotation-request-spinner').show();
 
                 var formData = new FormData();
-                
+
                 formData.append("_token", "{{ csrf_token() }}");
                 formData.append('product-name', "{{ $product['Name'] }}");
                 formData.append('name', $('#name').val());
@@ -239,6 +239,7 @@
                         $('#quotation-request-spinner').hide();
                         $('#quotation-request').modal('hide');
                         $('#success-modal').modal('show');
+                        $('#quotation-request-form').trigger("reset");
                     },
                     error: function(data) {
                         console.log("Error: ");
