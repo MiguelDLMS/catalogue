@@ -1,10 +1,10 @@
 @component('mail::message')
 
-    <h2>Solicitud de cotización</h2>
+    # Solicitud de cotización
 
-    <strong> {{ $requesterName }} {{ $requesterLastName }} </strong> con e-mail <strong> {{ $requesterMail }} </strong>,ha solicitado una cotización sobre el producto <strong> {{ $productName }} </strong>.
+    **{{ $requesterName }} {{ $requesterLastName }}** con e-mail **{{ $requesterMail }}**,ha solicitado una cotización sobre el producto **{{ $productName }}**.
 
-    <h2>Especificaciones de la solicitud</h2>
+    # Especificaciones de la solicitud
 
     {{ $requestSpecifications }}
 
@@ -12,7 +12,7 @@
         Ver  producto
     @endcomponent
 
-    Excelente día,<br>
+    Excelente día,
     {{ config('app.name') }}
 
 @endcomponent
