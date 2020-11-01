@@ -98,21 +98,6 @@
     </div>
     <!-- /.card -->
 
-    @if ( count($product['Categories']) )
-        <div class="card card-outline-secondary my-4">
-            <div class="card-header">
-                Categorías relacionadas
-            </div>
-            
-            <div class="card-body">
-                @foreach ( $product['Categories'] as $category )
-                    <a href="{{ url('category/'.$category['Name']) }}"><u>{{ $category['Name'] }}</u></a>
-                @endforeach
-            </div>
-        </div>
-        <!-- /.card -->
-    @endif
-
     <div class="card card-outline-secondary my-4">
         <div class="card-header">
             Información técnica
@@ -134,6 +119,21 @@
         </div>
     </div>
     <!-- /.card -->
+
+    @if ( count($product['Categories']) )
+        <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+                Categorías
+            </div>
+            
+            <div class="card-body">
+                @foreach ( $product['Categories'] as $category )
+                    <a href="{{ url('category/'.$category['Name']) }}"><u>{{ $category['Name'] }}</u></a>
+                @endforeach
+            </div>
+        </div>
+        <!-- /.card -->
+    @endif
 
     <div class="row my-4">
         <div class="col">
