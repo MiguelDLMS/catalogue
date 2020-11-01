@@ -40,6 +40,7 @@ class QuotationRequestMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.quotation-request');
+        return $this->from('dev@acorla.com')
+            ->markdown('mail.quotation-request');
     }
 }
