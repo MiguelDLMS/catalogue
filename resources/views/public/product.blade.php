@@ -12,6 +12,40 @@
 @endpush
 
 @push('content')
+    <div id="error-modal" class="modal fade" tabindex="-4" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabe">Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    No ha sido posible enviar la solicitud
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-modal" class="modal fade" tabindex="-3" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabe">Acción realizada</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    Se ha enviado la solicitud exitosamente
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="card mt-4">
             <div id="carouselExampleIndicators" class="carousel slide  card-img-top img-fluid" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -57,7 +91,7 @@
         <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form method="POST" action="{!! route('request.product.quote', [ 'id' => $product['ID_Product'] ]) !!}">
+                    <form id="quotation-request-form" method="POST" action="{!! route('request.product.quote', [ 'id' => $product['ID_Product'] ]) !!}">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalLabe">Solicitar cotización</h5>
@@ -88,7 +122,15 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+                            <button type="submit" class="btn btn-primary">
+                                <div id="request-quotation-spinner" style="display: none;">
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    <span class="sr-only">Enviando...</span>
+                                </div>
+                                <div id="request-quotation-text">
+                                    Solicitar cotización
+                                </div>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -164,9 +206,49 @@
 
     <script type="text/javascript" src="{{ asset('js/map.js') }}"></script>
     <script type="text/javascript">
-        $('#quotation-request').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); // Button that triggered the modal
-            var modal = $(this);
+        $(function () {
+            $('#quotation-request').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var modal = $(this);
+            });
+            
+            $("#quotation-request-form").submit(function(e) {
+                e.preventDefault();
+                $('#request-quotation-text').hide();
+                $('#request-quotation-spinner').show();
+
+                var formData = new FormData();
+
+                formData.append("_token", "{{ csrf_token() }}");
+                formData.append('deleteImages', $('#delete-images').attr("images"));
+
+                $.ajax({
+                    url: "{!! route('request.product.quote', [ 'id' => $product['ID_Product'] ]) !!}",
+                    type: 'POST',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    success: function(result) {
+                        console.log("Success: " + result);
+                        
+                        $('#request-quotation-text').show();
+                        $('#request-quotation-spinner').hide();
+                        $('#request-quotation').modal('hide');
+                        $('#success-modal').modal('show');
+                        location.reload();
+                    },
+                    error: function(data) {
+                        console.log("Error: ");
+                        console.log(data);
+
+                        $('#request-quotation-text').show();
+                        $('#request-quotation-spinner').hide();
+                        $('#request-quotation').modal('hide');
+                        $('#error-modal').modal('show');
+                        location.reload();
+                    }
+                });
+            });
         });
     </script>
 @endpush
