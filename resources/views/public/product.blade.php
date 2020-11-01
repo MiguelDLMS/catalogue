@@ -46,6 +46,57 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="quotation-request-form" method="POST" action="{!! route('request.product.quote', [ 'id' => $product['ID_Product'] ]) !!}">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabe">Solicitar cotización</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">Nombre(s):</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name" class="col-form-label">Apellido(s):</label>
+                            <input type="text" class="form-control" id="last-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-form-label">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="col-form-label">Especificaciones de la cotización:</label>
+                            <textarea class="form-control" id="message"></textarea>
+                        </div>
+
+                        <input type="hidden" id="product-name" name="product-name" value="{{ $product['Name'] }}">
+                        <input type="hidden" id="product-url" name="product-url" value="http://catalogue.acorla.com/product/{{ $product['ID_Product'] }}">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">
+                            <div id="quotation-request-spinner" style="display: none;">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span class="sr-only">Enviando...</span>
+                            </div>
+                            <div id="quotation-request-text">
+                                Solicitar cotización
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal -->
+
     <div class="card mt-4">
             <div id="carouselExampleIndicators" class="carousel slide  card-img-top img-fluid" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -86,57 +137,6 @@
         <div class="card-footer">
             <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#quotation-request">Cotizar</button>
         </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="quotation-request" tabindex="-1" role="dialog" aria-labelledby="modalLabe" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form id="quotation-request-form" method="POST" action="{!! route('request.product.quote', [ 'id' => $product['ID_Product'] ]) !!}">
-                        @csrf
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalLabe">Solicitar cotización</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="name" class="col-form-label">Nombre(s):</label>
-                                <input type="text" class="form-control" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="last-name" class="col-form-label">Apellido(s):</label>
-                                <input type="text" class="form-control" id="last-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="col-form-label">Correo electrónico:</label>
-                                <input type="email" class="form-control" id="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="message" class="col-form-label">Especificaciones de la cotización:</label>
-                                <textarea class="form-control" id="message"></textarea>
-                            </div>
-
-                            <input type="hidden" id="product-name" name="product-name" value="{{ $product['Name'] }}">
-                            <input type="hidden" id="product-url" name="product-url" value="http://catalogue.acorla.com/product/{{ $product['ID_Product'] }}">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary">
-                                <div id="quotation-request-spinner" style="display: none;">
-                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                    <span class="sr-only">Enviando...</span>
-                                </div>
-                                <div id="quotation-request-text">
-                                    Solicitar cotización
-                                </div>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- /Modal -->
     </div>
     <!-- /.card -->
 
@@ -219,8 +219,14 @@
 
                 var formData = new FormData();
 
+                $request['product-name'], $request['name'], $request['last-name'], $request['email'], $request['message']
+
                 formData.append("_token", "{{ csrf_token() }}");
-                formData.append('deleteImages', $('#delete-images').attr("images"));
+                formData.append('product-name', "{{ $product['Name'] }}");
+                formData.append('name', $('#name').val());
+                formData.append('last-name', $('#last-name').val());
+                formData.append('email', $('#email').val());
+                formData.append('message', $('#message').val());
 
                 $.ajax({
                     url: "{!! route('request.product.quote', [ 'id' => $product['ID_Product'] ]) !!}",
