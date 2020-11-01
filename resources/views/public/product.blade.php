@@ -123,11 +123,11 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                             <button type="submit" class="btn btn-primary">
-                                <div id="request-quotation-spinner" style="display: none;">
+                                <div id="quotation-request-spinner" style="display: none;">
                                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                     <span class="sr-only">Enviando...</span>
                                 </div>
-                                <div id="request-quotation-text">
+                                <div id="quotation-request-text">
                                     Solicitar cotización
                                 </div>
                             </button>
@@ -214,8 +214,8 @@
             
             $("#quotation-request-form").submit(function(e) {
                 e.preventDefault();
-                $('#request-quotation-text').hide();
-                $('#request-quotation-spinner').show();
+                $('#quotation-request-text').hide();
+                $('#quotation-request-spinner').show();
 
                 var formData = new FormData();
 
@@ -231,21 +231,19 @@
                     success: function(result) {
                         console.log("Success: " + result);
                         
-                        $('#request-quotation-text').show();
-                        $('#request-quotation-spinner').hide();
-                        $('#request-quotation').modal('hide');
+                        $('#quotation-request-text').show();
+                        $('#quotation-request-spinner').hide();
+                        $('#quotation-request').modal('hide');
                         $('#success-modal').modal('show');
-                        location.reload();
                     },
                     error: function(data) {
                         console.log("Error: ");
                         console.log(data);
 
-                        $('#request-quotation-text').show();
-                        $('#request-quotation-spinner').hide();
-                        $('#request-quotation').modal('hide');
+                        $('#quotation-request-text').show();
+                        $('#quotation-request-spinner').hide();
+                        $('#quotation-request').modal('hide');
                         $('#error-modal').modal('show');
-                        location.reload();
                     }
                 });
             });
