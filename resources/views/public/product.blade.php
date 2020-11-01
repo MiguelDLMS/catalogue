@@ -218,9 +218,7 @@
                 $('#quotation-request-spinner').show();
 
                 var formData = new FormData();
-
-                $request['product-name'], $request['name'], $request['last-name'], $request['email'], $request['message']
-
+                
                 formData.append("_token", "{{ csrf_token() }}");
                 formData.append('product-name', "{{ $product['Name'] }}");
                 formData.append('name', $('#name').val());
