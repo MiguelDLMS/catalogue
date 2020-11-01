@@ -33,8 +33,7 @@ class ProductsController extends Controller {
           'last-name' => 'required',
           'email' => 'required',
           'message' => 'required',
-          'product-name' => 'required',
-          'product-url' => 'required'
+          'product-name' => 'required'
       ]);
 
       try {
