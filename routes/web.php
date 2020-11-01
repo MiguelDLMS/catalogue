@@ -162,7 +162,7 @@ Route::post('/search', [
     'as' => 'search.product'
 ]);
 
-Route::middleware(['auth:sanctum', 'verified'])->post('product/{id}/request-quote', [
+Route::post('product/{id}/request-quote', [
     'uses' => 'App\Http\Controllers\ProductsController@request',
     'as' => 'request.product.quote'
 ])->where('id', '[0-9]+');

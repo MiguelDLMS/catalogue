@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Mail;
+
+use App\Mail\QuotationRequestMail;
 
 class ProductsController extends Controller {
 
@@ -33,6 +36,22 @@ class ProductsController extends Controller {
           'product-name' => 'required',
           'product-url' => 'required'
       ]);
+
+      try {
+         Mail::to("contacto@acorla.com")->send(new QuotationRequestMail($id, $request['product-name'], $$request['name'], $request['last-name'], $request['email'], $request['message']));
+         
+         return response("Mail sent", 200)->header('Content-Type', 'text/plain');
+      } catch (Exception $e) {
+         return response("Mail could not be sent: " . $e->getMessage(), 512)->header('Content-Type', 'text/plain');
+      }
+
+      $data = array('name'=>"Virat Gandhi");
+   
+      Mail::send(['text'=>'mail'], $data, function($message) {
+         $message->to('abc@gmail.com', 'Tutorials Point')->subject
+            ('Laravel Basic Testing Mail');
+         $message->from('xyz@gmail.com','Virat Gandhi');
+      });
   }
 
    public function search(Request $request) {
