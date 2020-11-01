@@ -8,7 +8,7 @@
 
 {{ $requestSpecifications }}
 
-@component('mail::button', ['url' => "{{ url('/product/'.$productID) }}"])
+@component('mail::button', ['url' => "{{ url('http://catalogue.acorla.com/product/'.$productID) }}"])
     Ver  producto
 @endcomponent
 
