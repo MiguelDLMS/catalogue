@@ -38,7 +38,7 @@ class ProductsController extends Controller {
       ]);
 
       try {
-         Mail::to("contacto@acorla.com")->send(new QuotationRequestMail($id, $request['product-name'], $$request['name'], $request['last-name'], $request['email'], $request['message']));
+         Mail::to("contacto@acorla.com")->send(new QuotationRequestMail($id, $request['product-name'], $request['name'], $request['last-name'], $request['email'], $request['message']));
          
          return response("Mail sent", 200)->header('Content-Type', 'text/plain');
       } catch (Exception $e) {
