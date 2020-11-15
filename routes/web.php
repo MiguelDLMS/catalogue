@@ -124,12 +124,6 @@ Route::get('category/{name}', function ($name) {
 // --------------------------------------------------------------------------
 // Admin
 
-Auth::routes([
-    'register' => false, // Registration Routes...
-    'reset' => true, // Password Reset Routes...
-    'verify' => true, // Email Verification Routes...
-]);
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
