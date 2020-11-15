@@ -145,7 +145,7 @@
             Información técnica
         </div>
         
-        <div class="card-body">
+        <div class="card-body" style="white-space: pre-wrap;">
             {{ $product['Technical_Specifications'] }}
         </div>
     </div>
