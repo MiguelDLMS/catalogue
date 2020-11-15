@@ -199,7 +199,7 @@
             </div>
             
             <div class="card-body">
-                <textarea class="form-control" id="specifications" name="specifications" value="{{ $product['Technical_Specifications'] }}"></textarea >
+                <textarea class="form-control" id="specifications" name="specifications">{{ $product['Technical_Specifications'] }}</textarea>
             </div>
         </div>
         <!-- /.card -->
