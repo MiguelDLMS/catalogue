@@ -145,6 +145,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('product/{id}/edit', functi
     
     $product['Images'] = json_decode($images, true);
 
+    $categories = DB::table('CATEGORIES')
+        ->join('PRODUCTS_CATEGORIES', 'PRODUCTS_CATEGORIES.FK_Category', '=', 'CATEGORIES.ID_Category')
+        ->join('PRODUCTS', 'PRODUCTS.ID_Product', '=', 'PRODUCTS_CATEGORIES.FK_Product')
+        ->select('CATEGORIES.ID_Category', 'CATEGORIES.Name')
+        ->where('PRODUCTS.ID_Product', $id)
+        ->get();
+
+    $product['Categories'] = json_decode($categories, true);
+
     return view('admin.product.edit', [ 
         'product' => $product
      ]);
